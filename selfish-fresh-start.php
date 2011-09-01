@@ -28,36 +28,36 @@ function rynonuke_setup() {
 
 // remove dashboard widgets
 function rynonuke_dashboard_boxes() {
-	//remove_meta_box('dashboard_right_now','dashboard','core'); // Right Now Overview Box
-	//remove_meta_box('dashboard_incoming_links','dashboard','core'); // Incoming Links Box
-	remove_meta_box('dashboard_quick_press','dashboard','core'); // Quick Press Box
-	remove_meta_box('dashboard_plugins','dashboard','core'); // Plugins Box
-	remove_meta_box('dashboard_recent_drafts','dashboard','core'); // Recent Drafts Box
-	//remove_meta_box('dashboard_recent_comments','dashboard','core'); // Recent Comments
-	remove_meta_box('dashboard_primary','dashboard','core'); // WordPress Development Blog
-	remove_meta_box('dashboard_secondary','dashboard','core'); // Other WordPress News
+	//remove_meta_box('dashboard_right_now','dashboard','core'); // right now overview box
+	//remove_meta_box('dashboard_incoming_links','dashboard','core'); // incoming links box
+	remove_meta_box('dashboard_quick_press','dashboard','core'); // quick press box
+	remove_meta_box('dashboard_plugins','dashboard','core'); // new plugins box
+	remove_meta_box('dashboard_recent_drafts','dashboard','core'); // recent drafts box
+	//remove_meta_box('dashboard_recent_comments','dashboard','core'); // recent comments box
+	remove_meta_box('dashboard_primary','dashboard','core'); // wordpress development blog box
+	remove_meta_box('dashboard_secondary','dashboard','core'); // other wordpress news box
 }
 // remove meta boxes from default posts screen
 function rynonuke_post_metaboxes() {
-	//remove_meta_box('postcustom','post','normal'); // Custom Fields Metabox
-	//remove_meta_box('postexcerpt','post','normal'); // Excerpt Metabox
-	remove_meta_box('commentstatusdiv','post','normal'); // Comments Metabox
-	remove_meta_box('trackbacksdiv','post','normal'); // Trackbacks Metabox
-	remove_meta_box('slugdiv','post','normal'); // Slug Metabox
-	remove_meta_box('authordiv','post','normal'); // Author Metabox
-	//remove_meta_box('revisionsdiv','post','normal'); // Revisions metabox
-	remove_meta_box('tagsdiv-post_tag','post','normal'); // Tags metabox
-	//remove_meta_box('categorydiv','post','normal'); // Comments metabox
+	//remove_meta_box('postcustom','post','normal'); // custom fields metabox
+	//remove_meta_box('postexcerpt','post','normal'); // excerpt metabox
+	remove_meta_box('commentstatusdiv','post','normal'); // comments metabox
+	remove_meta_box('trackbacksdiv','post','normal'); // trackbacks metabox
+	remove_meta_box('slugdiv','post','normal'); // slug metabox
+	remove_meta_box('authordiv','post','normal'); // author metabox
+	//remove_meta_box('revisionsdiv','post','normal'); // revisions metabox
+	remove_meta_box('tagsdiv-post_tag','post','normal'); // tags metabox
+	//remove_meta_box('categorydiv','post','normal'); // comments metabox
 }
 // remove meta boxes from default pages screen
 function rynonuke_page_metaboxes() {
-	//remove_meta_box('postcustom','page','normal'); // Custom Fields Metabox
-	remove_meta_box('commentstatusdiv','page','normal'); // Discussion Metabox
-	remove_meta_box('commentsdiv','page','normal'); // Comments Metabox
-	remove_meta_box('slugdiv','page','normal'); // Slug Metabox
-	remove_meta_box('authordiv','page','normal'); // Author Metabox
-	//remove_meta_box('revisionsdiv','page','normal'); // Revisions Metabox
-	//remove_meta_box('postimagediv','page','side'); // Featured image metabox
+	//remove_meta_box('postcustom','page','normal'); // custom fields metabox
+	remove_meta_box('commentstatusdiv','page','normal'); // discussion metabox
+	remove_meta_box('commentsdiv','page','normal'); // comments metabox
+	remove_meta_box('slugdiv','page','normal'); // slug metabox
+	remove_meta_box('authordiv','page','normal'); // author metabox
+	//remove_meta_box('revisionsdiv','page','normal'); // revisions metabox
+	//remove_meta_box('postimagediv','page','side'); // featured image metabox
 }
 
 // remove update notifications for everybody except admin users
@@ -103,5 +103,4 @@ update_option('default_ping_status','closed');
 update_option('default_pingback_flag','0');
 update_option('use_smilies','0');
 update_option('uploads_use_yearmonth_folders','0');
-
 ?>
