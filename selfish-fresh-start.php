@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Selfish Fresh Start
- * Plugin URI: http://wordpress.org/extend/plugins/-----
- * Description: This is a custom plugin that I like to use for all installs, one place to keep the best starter functions.
+ * Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
+ * Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
  * Author: Chuck Reynolds
  * Author URI: http://rynoweb.com/wordpress-plugins/
  * Version: 0.1
@@ -21,6 +21,7 @@ function rynonuke_setup() {
 	add_action('admin_menu','rynonuke_page_metaboxes');
 	add_action('admin_notices','rynonuke_update_notification_nonadmins',1);
 	add_action('pre_ping','rynonuke_self_pings');
+	add_action('admin_init','rynonuke_dolly');
 	
 	add_filter('the_content_more_link','rynonuke_more_jump_link');
 	add_filter('user_contactmethods','rynonuke_contactmethods',10,1);	
@@ -71,6 +72,15 @@ function rynonuke_self_pings( &$links ) {
     foreach ( $links as $l => $link )
         if ( 0 === strpos( $link, get_option( 'home' ) ) )
             unset($links[$l]);
+}
+
+// adios dolly
+function rynonuke_dolly() {
+    if (file_exists(WP_PLUGIN_DIR.'/hello.php')) {
+        //require_once(ABSPATH.'wp-admin/includes/plugin.php');
+        //require_once(ABSPATH.'wp-admin/includes/file.php');
+        delete_plugins(array('hello.php'));
+    }
 }
 
 // mod more link to not use hashtag anchor
