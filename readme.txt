@@ -13,7 +13,7 @@ This general plugin is built to run on EVERY install you have. Removes unneeded 
 This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
 
 = Current Operations =
-* Remove: clean up unneeded header tags including:
+* Removed: clean up unneeded header tags including:
 	* index relation links
 	* start relation links
 	* wlw manifest links
