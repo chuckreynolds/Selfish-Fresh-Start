@@ -39,6 +39,12 @@ function rynonuke_dashboard_boxes() {
 	//remove_meta_box('dashboard_recent_comments','dashboard','core'); // recent comments box
 	remove_meta_box('dashboard_primary','dashboard','core'); // wordpress development blog box
 	remove_meta_box('dashboard_secondary','dashboard','core'); // other wordpress news box
+	
+	// start removing plugin dashboard boxes. yup i'm goin there
+	remove_meta_box('yoast_db_widget','dashboard','core'); // yoasts dash news
+	remove_meta_box('aw_dashboard','dashboard','core'); // wp socializer box
+	remove_meta_box('w3tc_latest','dashboard','core'); //w3 total cache news box
+	 
 }
 // remove meta boxes from default posts screen
 function rynonuke_post_metaboxes() {
