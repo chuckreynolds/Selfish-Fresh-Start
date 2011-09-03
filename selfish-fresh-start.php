@@ -5,7 +5,7 @@
  * Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
  * Author: Chuck Reynolds
  * Author URI: http://rynoweb.com/wordpress-plugins/
- * Version: 0.2
+ * Version: 0.3beta
  */
 
 add_action('after_setup_theme','rynonuke_setup');
