@@ -44,7 +44,7 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 * Removed: potential for self ping backs
 * Removed: checks for and nukes Hello Dolly plugin *(sorry Matt)*
 * Removed: user yim, aim, jabber fields
-* Add: user profile twitter, facebook fields
+* Add: user profile twitter, facebook, linkedin, google plus fields
 * Off: turn off global trackback/pingback setting
 * Off: turn off global formatting of text to graphic smilies
 * Off: turn off /year/month/ file upload archives
@@ -56,6 +56,9 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 1. That's it... seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+
+= 0.3 =
+* added linkedin and google plus user fields
 
 = 0.2 =
 * removed generator tag. not really needed either, helps with security scanning.
