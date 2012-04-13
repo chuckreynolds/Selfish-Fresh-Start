@@ -85,8 +85,6 @@ function rynonuke_self_pings( &$links ) {
 // adios dolly
 function rynonuke_dolly() {
     if (file_exists(WP_PLUGIN_DIR.'/hello.php')) {
-        //require_once(ABSPATH.'wp-admin/includes/plugin.php');
-        //require_once(ABSPATH.'wp-admin/includes/file.php');
         delete_plugins(array('hello.php'));
     }
 }
@@ -122,5 +120,5 @@ define('DISALLOW_FILE_EDIT',true);
 update_option('default_ping_status','closed');
 update_option('default_pingback_flag','0');
 update_option('use_smilies','0');
-update_option('uploads_use_yearmonth_folders','0');
+//update_option('uploads_use_yearmonth_folders','0');
 ?>
