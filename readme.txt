@@ -1,16 +1,16 @@
 === Selfish Fresh Start ===
 Contributors: ryno267
 Donate link: http://rynoweb.com/wordpress-plugins/
-Tags: clean, fresh start, new install, clean admin, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news
+Tags: clean, fresh start, new install, clean admin, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
 Requires at least: 3.0
-Tested up to: 3.2.1
+Tested up to: 3.4.1
 Stable tag: trunk
 
-This general plugin is built to run on EVERY install you have. Removes unneeded admin clutter and stuff.
+Built to run on EVERY install you have, fresh start removes unneeded admin clutter and sets up the needed settings for every site.
 
 == Description ==
 
-This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
+This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:
@@ -39,15 +39,16 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 	* author *(if you must, use quick edit)*
 	* discussion box
 * Removed: appearance menu theme editor *(some ppl may not like this but use ftp; great for client admins)*
+* Removed: plugins editor menu
+* Removed: plugins list edit links
 * Removed: more jump link to #anchor
 * Removed: update notifications for non-admin users
 * Removed: potential for self ping backs
 * Removed: checks for and nukes Hello Dolly plugin *(sorry Matt)*
-* Removed: user yim, aim, jabber fields
+* Removed: admin user yim, aim, jabber fields
 * Add: user profile twitter, facebook, linkedin, google plus fields
 * Off: turn off global trackback/pingback setting
 * Off: turn off global formatting of text to graphic smilies
-* Off: turn off /year/month/ file upload archives
 
 == Installation ==
 
@@ -56,7 +57,6 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 1. That's it... seriously. Everything is done already. Enjoy.
 
 == Changelog ==
-
 = 0.3 =
 * added linkedin and google plus user fields
 
