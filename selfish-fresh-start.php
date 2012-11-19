@@ -1,12 +1,29 @@
 <?php
-/**
- * Plugin Name: Selfish Fresh Start
- * Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
- * Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
- * Author: Chuck Reynolds
- * Author URI: http://rynoweb.com/wordpress-plugins/
- * Version: 0.3beta
- */
+/*
+Plugin Name: Selfish Fresh Start
+Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
+Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
+Version: 0.4
+Author: Chuck Reynolds
+Author URI: http://rynoweb.com/wordpress-plugins/
+License: GPL2
+*/
+/*
+	Copyright 2011 Selfish Fresh Start plugin (email: chuck@rynoweb.com)
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License, version 2, as
+	published by the Free Software Foundation.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
 
 add_action('after_setup_theme','rynonuke_setup');
 function rynonuke_setup() {
@@ -52,7 +69,7 @@ function rynonuke_post_metaboxes() {
 	//remove_meta_box('postexcerpt','post','normal'); // excerpt metabox
 	remove_meta_box('commentstatusdiv','post','normal'); // comments metabox
 	remove_meta_box('trackbacksdiv','post','normal'); // trackbacks metabox
-	remove_meta_box('slugdiv','post','normal'); // slug metabox
+	//remove_meta_box('slugdiv','post','normal'); // slug metabox (breaks edit permalink update)
 	remove_meta_box('authordiv','post','normal'); // author metabox
 	//remove_meta_box('revisionsdiv','post','normal'); // revisions metabox
 	remove_meta_box('tagsdiv-post_tag','post','normal'); // tags metabox
@@ -63,7 +80,7 @@ function rynonuke_page_metaboxes() {
 	//remove_meta_box('postcustom','page','normal'); // custom fields metabox
 	remove_meta_box('commentstatusdiv','page','normal'); // discussion metabox
 	remove_meta_box('commentsdiv','page','normal'); // comments metabox
-	remove_meta_box('slugdiv','page','normal'); // slug metabox
+	//remove_meta_box('slugdiv','page','normal'); // slug metabox (breaks edit permalink update)
 	remove_meta_box('authordiv','page','normal'); // author metabox
 	//remove_meta_box('revisionsdiv','page','normal'); // revisions metabox
 	//remove_meta_box('postimagediv','page','side'); // featured image metabox

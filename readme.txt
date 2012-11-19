@@ -3,7 +3,7 @@ Contributors: ryno267
 Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
 Requires at least: 3.0
-Tested up to: 3.4.1
+Tested up to: 3.5
 Stable tag: trunk
 
 Built to run on EVERY install you have, fresh start removes unneeded admin clutter and sets up the needed settings for every site.
@@ -30,12 +30,10 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 * Removed: post metabox's
 	* comments box
 	* trackbacks
-	* slug *(can use the ajax one under post title)*
 	* author *(if you must, use quick edit)*
 	* tags box *(nobody uses tags right, just not needed)*
 * Removed: page metabox's
 	* comments box
-	* slug *(can use the ajax one under page title)*
 	* author *(if you must, use quick edit)*
 	* discussion box
 * Removed: appearance menu theme editor *(some ppl may not like this but use ftp; great for client admins)*
@@ -57,6 +55,9 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 1. That's it... seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 0.4 =
+* temporarily removed removing 'slugdiv' from posts and pages as it was found to hinder the edit permalink updating function. that's another issue with wordpress but had to stop hiding that until wp fixes that.
+
 = 0.3 =
 * added linkedin and google plus user fields
 
