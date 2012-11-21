@@ -3,7 +3,7 @@
 Plugin Name: Selfish Fresh Start
 Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
 Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
-Version: 0.4
+Version: 0.5BETA
 Author: Chuck Reynolds
 Author URI: http://rynoweb.com/wordpress-plugins/
 License: GPL2
@@ -23,6 +23,9 @@ License: GPL2
 	You should have received a copy of the GNU General Public License
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+/* CHANGES FROM .4
+* checking if DISALLOW_FILE_EDIT is defined or not to avoid issues
 */
 
 add_action('after_setup_theme','rynonuke_setup');
@@ -130,8 +133,10 @@ function rynonuke_contactmethods($contactmethods) {
 	return $contactmethods;
 }
 
-// remove theme editor
-define('DISALLOW_FILE_EDIT',true);
+// if not defined already, remove theme editor
+if(!defined('DISALLOW_FILE_EDIT')) {
+    define('DISALLOW_FILE_EDIT', 'true');
+}
 
 // options table flags
 update_option('default_ping_status','closed');
