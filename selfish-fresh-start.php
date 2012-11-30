@@ -3,7 +3,7 @@
 Plugin Name: Selfish Fresh Start
 Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
 Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, checks for and nukes Hello Dolly, removes junk header tags, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pining, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start.
-Version: 0.5BETA
+Version: 0.6b
 Author: Chuck Reynolds
 Author URI: http://rynoweb.com/wordpress-plugins/
 License: GPL2
@@ -24,8 +24,8 @@ License: GPL2
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
-/* CHANGES FROM .4
-* checking if DISALLOW_FILE_EDIT is defined or not to avoid issues
+/* changes from 0.5
+*
 */
 
 add_action('after_setup_theme','rynonuke_setup');
@@ -37,16 +37,16 @@ function rynonuke_setup() {
 	remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 	remove_action('wp_head','wp_generator');
 	remove_action('wp_head','wp_shortlink_wp_head');
-	
+
 	add_action('admin_menu','rynonuke_dashboard_boxes');
 	add_action('admin_menu','rynonuke_post_metaboxes');
 	add_action('admin_menu','rynonuke_page_metaboxes');
 	add_action('admin_notices','rynonuke_update_notification_nonadmins',1);
 	add_action('pre_ping','rynonuke_self_pings');
 	add_action('admin_init','rynonuke_dolly');
-	
+
 	add_filter('the_content_more_link','rynonuke_more_jump_link');
-	add_filter('user_contactmethods','rynonuke_contactmethods',10,1);	
+	add_filter('user_contactmethods','rynonuke_contactmethods',10,1);
 }
 
 // remove dashboard widgets
@@ -59,18 +59,18 @@ function rynonuke_dashboard_boxes() {
 	//remove_meta_box('dashboard_recent_comments','dashboard','core'); // recent comments box
 	remove_meta_box('dashboard_primary','dashboard','core'); // wordpress development blog box
 	remove_meta_box('dashboard_secondary','dashboard','core'); // other wordpress news box
-	
+
 	// start removing plugin dashboard boxes. yup i'm goin there
 	remove_meta_box('yoast_db_widget','dashboard','core'); // yoasts dash news
 	remove_meta_box('aw_dashboard','dashboard','core'); // wp socializer box
-	remove_meta_box('w3tc_latest','dashboard','core'); //w3 total cache news box
-	 
+	remove_meta_box('w3tc_latest','dashboard','core'); // w3 total cache news box
+
 }
 // remove meta boxes from default posts screen
 function rynonuke_post_metaboxes() {
 	//remove_meta_box('postcustom','post','normal'); // custom fields metabox
 	//remove_meta_box('postexcerpt','post','normal'); // excerpt metabox
-	remove_meta_box('commentstatusdiv','post','normal'); // comments metabox
+	//remove_meta_box('commentstatusdiv','post','normal'); // comments metabox
 	remove_meta_box('trackbacksdiv','post','normal'); // trackbacks metabox
 	//remove_meta_box('slugdiv','post','normal'); // slug metabox (breaks edit permalink update)
 	remove_meta_box('authordiv','post','normal'); // author metabox
@@ -91,7 +91,7 @@ function rynonuke_page_metaboxes() {
 
 // remove update notifications for everybody except admin users
 function rynonuke_update_notification_nonadmins() {
-	if (!current_user_can('administrator')) 
+	if (!current_user_can('administrator'))
 		remove_action('admin_notices','update_nag',3);
 }
 
@@ -110,7 +110,7 @@ function rynonuke_dolly() {
 }
 
 // mod more link to not use hashtag anchor
-function rynonuke_more_jump_link($link) { 
+function rynonuke_more_jump_link($link) {
 	$offset = strpos($link,'#more-');
 	if ($offset) {
 		$end = strpos($link,'"',$offset);

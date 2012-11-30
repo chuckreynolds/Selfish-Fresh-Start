@@ -4,7 +4,7 @@ Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 0.4
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,6 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 	* wordpress development blog feed
 	* other wordpress blog news feed
 * Removed: post metabox's
-	* comments box
 	* trackbacks
 	* author *(if you must, use quick edit)*
 	* tags box *(nobody uses tags right, just not needed)*
@@ -56,6 +55,10 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 1. That's it... seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 0.5 =
+* checking if DISALLOW_FILE_EDIT is defined or not to avoid issues. if not add it.
+* comments div affecting some sites not able to turn them back on. spotty, so taking out for now
+
 = 0.4 =
 * temporarily removed removing 'slugdiv' from posts and pages as it was found to hinder the edit permalink updating function. that's another issue with wordpress but had to stop hiding that until wp fixes that.
 
@@ -71,11 +74,12 @@ This WordPress plugin Removes some, in my opinion, unused crappy dashboard, post
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
-
+= 0.5 =
+Some sites reporting issues w/ comments always off on posts. put back comment div for now until more testing.
 = 0.2 =
 Added additional features, one of which helps secure your WP site. Always stay up to date!
 
 
 == Other Notes ==
 
-* Built on a hack-night at GangplankHQ.com. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted it as a plugin. So... here we go. Feel free to ask for features on my [WordPress Plugins](http://rynoweb.com/wordpress-plugins/ "Chuck's WordPress Plugins") form.
+* Built on a hack-night at GangplankHQ.com. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted it as a plugin. So... here we go. Feel free to ask for features on my [Chuck Reynolds WordPress Plugins](http://rynoweb.com/wordpress-plugins/ "Chuck Reynolds WordPress Plugins") page.
