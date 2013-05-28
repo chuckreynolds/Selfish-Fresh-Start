@@ -25,7 +25,7 @@ License: GPL2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 /* changes from 0.5
-*
+* remove dashboard welcome panel that was added in 3.5
 */
 
 add_action('after_setup_theme','rynonuke_setup');
@@ -47,6 +47,7 @@ function rynonuke_setup() {
 
 	add_filter('the_content_more_link','rynonuke_more_jump_link');
 	add_filter('user_contactmethods','rynonuke_contactmethods',10,1);
+	remove_action('welcome_panel','wp_welcome_panel'); // Remove welcome panel for all users
 }
 
 // remove dashboard widgets
@@ -143,4 +144,3 @@ update_option('default_ping_status','closed');
 update_option('default_pingback_flag','0');
 update_option('use_smilies','0');
 //update_option('uploads_use_yearmonth_folders','0');
-?>
