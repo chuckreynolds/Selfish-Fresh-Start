@@ -4,7 +4,7 @@ Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 0.6
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ This WordPress plugin removes some, in my opinion, unused crappy dashboard, post
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 0.6.1 =
+* fixed bug with & symbols
+
 = 0.6 =
 * all object oriented now and cleaned up code a lot. mo betta
 * HUGE pet peeve of mine is people pasting from word (or others) with formatted text. so i'm tired of fixing it all the time so lets force fix curly quotes and some common unicode, ascii, and utf-8 problems
@@ -77,7 +80,7 @@ This WordPress plugin removes some, in my opinion, unused crappy dashboard, post
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
-= 0.6 =
+= 0.6.1 =
 Some new features and cleaner code. overall a pretty big update.
 = 0.5 =
 Some sites reporting issues w/ comments always off on posts. put back comment div for now until more testing.
