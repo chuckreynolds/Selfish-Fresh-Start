@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Selfish Fresh Start
-Plugin URI: http://wordpress.org/extend/plugins/selfish-fresh-start
-Description: This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
-Version: 0.6.1
-Author: Chuck Reynolds
-Author URI: http://rynoweb.com/wordpress-plugins/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Plugin Name: 	Selfish Fresh Start
+Plugin URI: 	http://wordpress.org/plugins/selfish-fresh-start
+Description: 	This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
+Version: 		0.6.1
+Author: 		Chuck Reynolds
+Author URI: 	http://rynoweb.com/wordpress-plugins/
+License: 		GPLv2 or later
+License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 
 Copyright 2014 Chuck Reynolds (email : chuck@rynoweb.com)
 
