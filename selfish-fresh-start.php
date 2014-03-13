@@ -3,7 +3,7 @@
 Plugin Name: 	Selfish Fresh Start
 Plugin URI: 	http://wordpress.org/plugins/selfish-fresh-start
 Description: 	This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
-Version: 		0.6.1
+Version: 		0.6.2dev
 Author: 		Chuck Reynolds
 Author URI: 	http://rynoweb.com/wordpress-plugins/
 License: 		GPLv2 or later
@@ -91,21 +91,12 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	/*
 	public function nukeTrackbacksSmilies() {
-		update_option('default_ping_status', 'closed');
-		update_option('default_pingback_flag', '0');
-		update_option('use_smilies', '0');
-		# update_option('uploads_use_yearmonth_folders', '0');
-	}
-	*/
-	public function nukeTrackbacksSmilies() {
-	$options = array(
-		'default_ping_status'           => 'closed',
-		'default_pingback_flag'         => 0,
-		'use_smilies'                   => 0,
-		# 'uploads_use_yearmonth_folders' => 0,
-	);
+		$options = array(
+			'default_ping_status'	=> 'closed',
+			'default_pingback_flag'	=> 0,
+			'use_smilies'			=> 0
+		);
 
 		foreach($options as $key => $value)
 		{
