@@ -91,11 +91,30 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
+	/*
 	public function nukeTrackbacksSmilies() {
 		update_option('default_ping_status', 'closed');
 		update_option('default_pingback_flag', '0');
 		update_option('use_smilies', '0');
 		# update_option('uploads_use_yearmonth_folders', '0');
+	}
+	*/
+	public function nukeTrackbacksSmilies() {
+	$options = array(
+		'default_ping_status'           => 'closed',
+		'default_pingback_flag'         => 0,
+		'use_smilies'                   => 0,
+		# 'uploads_use_yearmonth_folders' => 0,
+	);
+
+		foreach($options as $key => $value)
+		{
+			$current = get_option($key);
+			if($current != $value)
+			{
+				update_option($key, $value);
+			}
+		}
 	}
 
 	/**
