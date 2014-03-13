@@ -13,6 +13,8 @@ Built to run on EVERY install you have, fresh start removes unneeded admin clutt
 == Description ==
 This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
 
+If you think you'd like to contribute via Pull Request: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
+
 = Current Operations =
 * Removed: clean up unneeded header tags including:
 	* index relation links
@@ -51,6 +53,9 @@ This WordPress plugin removes some, in my opinion, unused crappy dashboard, post
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 0.7 =
+* removed dashboard widgets: bbpress, gravity forms
+
 = 0.6.1 =
 * fixed bug with & symbols
 
@@ -88,4 +93,4 @@ Some sites reporting issues w/ comments always off on posts. put back comment di
 Added additional features, one of which helps secure your WP site. Always stay up to date!
 
 == Other Notes ==
-* Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to ask for features on my [Chuck Reynolds WordPress Plugins](http://rynoweb.com/wordpress-plugins/ "Chuck Reynolds WordPress Plugins") page.
+* Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to do pull requests or add issues on github: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)

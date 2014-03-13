@@ -117,6 +117,8 @@ Class RynoNuke {
 		remove_meta_box('yoast_db_widget', 'dashboard', 'core'); // yoasts dash news
 		remove_meta_box('aw_dashboard', 'dashboard', 'core'); // wp socializer box
 		remove_meta_box('w3tc_latest', 'dashboard', 'core'); // w3 total cache news box
+		remove_meta_box('rg_forms_dashboard', 'dashboard', 'core'); // gravity forms
+		remove_meta_box('bbp-dashboard-right-now', 'dashboard', 'core'); // bbpress
 	}
 
 	/**
