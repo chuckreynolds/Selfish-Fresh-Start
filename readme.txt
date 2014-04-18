@@ -4,7 +4,7 @@ Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 0.6.1
+Stable tag: 0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,7 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 = 0.7 =
 * removed dashboard widgets: bbpress, gravity forms
 * add check for option settings before updating them
+* test for WP 3.9
 
 = 0.6.1 =
 * fixed bug with & symbols
