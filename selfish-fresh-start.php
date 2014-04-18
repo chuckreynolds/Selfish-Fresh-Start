@@ -60,7 +60,7 @@ Class RynoNuke {
 		remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 		remove_action('wp_head', 'wp_generator');
 		remove_action('wp_head', 'wp_shortlink_wp_head');
-		remove_action('welcome_panel', 'wp_welcome_anel');
+		remove_action('welcome_panel', 'wp_welcome_panel');
 
 		add_action('admin_menu', array($this, 'nukeDashboardBoxes'));
 		add_action('admin_menu', array($this, 'nukePostMetaboxes'));
