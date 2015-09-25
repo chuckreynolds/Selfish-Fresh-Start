@@ -3,7 +3,7 @@
 Plugin Name:    Selfish Fresh Start
 Plugin URI:     http://wordpress.org/plugins/selfish-fresh-start
 Description:    This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
-Version:        0.7
+Version:        0.8
 Author:         Chuck Reynolds
 Author URI:     http://rynoweb.com/wordpress-plugins/
 License:        GPLv2 or later
@@ -65,7 +65,7 @@ Class RynoNuke {
 		add_action( 'admin_menu', array( $this, 'nukeDashboardBoxes' ) );
 		add_action( 'admin_menu', array( $this, 'nukePostMetaboxes' ) );
 		add_action( 'admin_menu', array( $this, 'nukePageMetaboxes' ) );
-		add_action( 'admin_notices', array( $this, 'nukeUpdateNotificationNonAdmins' ), 1 );
+		add_action( 'admin_head', array( $this, 'nukeUpdateNotificationNonAdmins' ), 1 );
 		add_action( 'pre_ping', array( $this, 'nukeSelfPings' ) );
 		add_action( 'admin_init', array( $this, 'nukeHelloDolly' ) );
 
@@ -168,7 +168,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeUpdateNotificationNonAdmins() {
-		if ( ! current_user_can( 'administrator' ) ) {
+		if ( ! current_user_can( 'update_core' ) ) {
 			remove_action( 'admin_notices', 'update_nag', 3 );
 		}
 	}
