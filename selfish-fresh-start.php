@@ -58,26 +58,26 @@ Class RynoNuke {
 	 */
 	public function afterThemeSetup() {
 
-		remove_action( 'wp_head', 'rsd_link' );
-		remove_action( 'wp_head', 'wlwmanifest_link' );
-		remove_action( 'wp_head', 'index_rel_link' );
-		remove_action( 'wp_head', 'start_post_rel_link' );
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
-		remove_action( 'wp_head', 'wp_generator' );
-		remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-		remove_action( 'welcome_panel', 'wp_welcome_panel' );
+		remove_action( 'wp_head',            'rsd_link' );
+		remove_action( 'wp_head',            'wlwmanifest_link' );
+		remove_action( 'wp_head',            'index_rel_link' );
+		remove_action( 'wp_head',            'start_post_rel_link' );
+		remove_action( 'wp_head',            'adjacent_posts_rel_link_wp_head' );
+		remove_action( 'wp_head',            'wp_generator' );
+		remove_action( 'wp_head',            'wp_shortlink_wp_head' );
+		remove_action( 'welcome_panel',      'wp_welcome_panel' );
 
-		add_action( 'admin_menu', array( $this, 'nukeDashboardBoxes' ) );
-		add_action( 'admin_menu', array( $this, 'nukePostMetaboxes' ) );
-		add_action( 'admin_menu', array( $this, 'nukePageMetaboxes' ) );
-		add_action( 'admin_head', array( $this, 'nukeUpdateNotificationNonAdmins' ), 1 );
-		add_action( 'pre_ping', array( $this, 'nukeSelfPings' ) );
-		add_action( 'admin_init', array( $this, 'nukeHelloDolly' ) );
-
-		add_filter( 'the_content_more_link', array( $this, 'nukeMoreJumpLinkAnchor' ) );
-		add_filter( 'user_contactmethods', array( $this, 'nukeContactMethods' ), 10, 1 );
-		add_filter( 'content_save_pre', array( $this, 'nukeCurlyOtherChars' ) );
-		add_filter( 'title_save_pre', array( $this, 'nukeCurlyOtherChars' ) );
+		add_action( 'wp_dashboard_setup',    array( $this, 'nuke_dashboard_metaboxes' ) );
+		add_action( 'do_meta_boxes',         array( $this, 'nuke_plugin_metaboxes') );
+		add_action( 'admin_menu',            array( $this, 'nuke_post_metaboxes' ) );
+		add_action( 'admin_menu',            array( $this, 'nuke_page_metaboxes' ) );
+		add_action( 'admin_head',            array( $this, 'nuke_update_notification_non_admins' ), 1 );
+		add_action( 'pre_ping',              array( $this, 'nuke_self_pings' ) );
+		add_action( 'admin_init',            array( $this, 'nuke_hello_dolly' ) );
+		add_filter( 'the_content_more_link', array( $this, 'nuke_more_jump_link_anchor' ) );
+		add_filter( 'user_contactmethods',   array( $this, 'nuke_contact_methods' ), 10, 1 );
+		add_filter( 'content_save_pre',      array( $this, 'nuke_curly_other_chars' ) );
+		add_filter( 'title_save_pre',        array( $this, 'nuke_curly_other_chars' ) );
 
 	}
 
@@ -124,24 +124,33 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeDashboardBoxes() {
+	public function nuke_dashboard_metaboxes() {
 
-		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );    // incoming links box
-		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );       // quick press box
-		remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );           // new plugins box
-		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );     // recent drafts box
-		remove_meta_box( 'dashboard_primary', 'dashboard', 'core' );           // wordpress development blog box
-		remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' );         // other wordpress news box
-		# remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );       // right now overview box
-		# remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' ); // recent comments box
+		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box
+		remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box
+		#remove_meta_box('dashboard_right_now',       'dashboard', 'normal');  // Right Now
+    	#remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');  // Recent Comments
+		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // quick draft box
+		remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts box
+		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // wordpress news blog box
+		remove_meta_box( 'dashboard_secondary',      'dashboard', 'side' );   // other wordpress news box
 
-		// start removing plugin dashboard boxes. yup i'm goin there
-		remove_meta_box( 'yoast_db_widget', 'dashboard', 'core' );             // yoasts dash news
-		remove_meta_box( 'aw_dashboard', 'dashboard', 'core' );                // wp socializer box
-		remove_meta_box( 'w3tc_latest', 'dashboard', 'core' );                 // w3 total cache news box
-		remove_meta_box( 'rg_forms_dashboard', 'dashboard', 'core' );          // gravity forms
-		remove_meta_box( 'bbp-dashboard-right-now', 'dashboard', 'core' );     // bbpress
-		remove_meta_box( 'jetpack_summary_widget', 'dashboard', 'normal' );    // jetpack
+	}
+
+	/**
+	 * Removes some plugin dashboard widgets.
+	 * yup i'm goin there. sorry not sorry.
+	 *
+	 * @return void
+	 */
+	public function nuke_plugin_metaboxes() {
+
+		remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'normal' ); // yoast seo overview
+		remove_meta_box( 'aw_dashboard',             'dashboard', 'normal' ); // wp socializer box
+		remove_meta_box( 'w3tc_latest',              'dashboard', 'normal' ); // w3 total cache news box
+		remove_meta_box( 'rg_forms_dashboard',       'dashboard', 'normal' ); // gravity forms
+		remove_meta_box( 'bbp-dashboard-right-now',  'dashboard', 'normal' ); // bbpress right now in forums
+		remove_meta_box( 'jetpack_summary_widget',   'dashboard', 'normal' ); // jetpack
 
 	}
 
@@ -150,17 +159,17 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukePostMetaboxes() {
+	public function nuke_post_metaboxes() {
 
-		remove_meta_box( 'trackbacksdiv', 'post', 'normal' );                  // trackbacks metabox
-		# remove_meta_box( 'postcustom', 'post', 'normal' );                   // custom fields metabox
-		# remove_meta_box( 'postexcerpt', 'post', 'normal' );                  // excerpt metabox
-		# remove_meta_box( 'commentstatusdiv', 'post', 'normal' );             // comments metabox
-		# remove_meta_box( 'slugdiv', 'post', 'normal' );                      // slug metabox (breaks edit permalink update)
-		# remove_meta_box( 'authordiv', 'post', 'normal' );                    // author metabox
-		# remove_meta_box( 'revisionsdiv', 'post', 'normal' );                 // revisions metabox
-		# remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' );             // tags metabox
-		# remove_meta_box( 'categorydiv', 'post', 'normal' );                  // comments metabox
+		remove_meta_box( 'trackbacksdiv',      'post', 'normal' ); // trackbacks metabox
+		# remove_meta_box( 'postcustom',       'post', 'normal' ); // custom fields metabox
+		# remove_meta_box( 'postexcerpt',      'post', 'normal' ); // excerpt metabox
+		# remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // comments metabox
+		# remove_meta_box( 'slugdiv',          'post', 'normal' ); // slug metabox (breaks edit permalink update)
+		# remove_meta_box( 'authordiv',        'post', 'normal' ); // author metabox
+		# remove_meta_box( 'revisionsdiv',     'post', 'normal' ); // revisions metabox
+		# remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' ); // tags metabox
+		# remove_meta_box( 'categorydiv',      'post', 'normal' ); // comments metabox
 
 	}
 
@@ -169,15 +178,15 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukePageMetaboxes() {
+	public function nuke_page_metaboxes() {
 
-		remove_meta_box( 'commentstatusdiv', 'page', 'normal' );               // discussion metabox
-		remove_meta_box( 'commentsdiv', 'page', 'normal' );                    // comments metabox
-		# remove_meta_box( 'postcustom', 'page', 'normal' );                   // custom fields metabox
-		# remove_meta_box( 'slugdiv', 'page', 'normal' );                      // slug metabox (breaks edit permalink update)
-		# remove_meta_box( 'authordiv', 'page', 'normal' );                    // author metabox
-		# remove_meta_box( 'revisionsdiv', 'page', 'normal' );                 // revisions metabox
-		# remove_meta_box( 'postimagediv', 'page', 'side' );                   // featured image metabox
+		remove_meta_box( 'commentstatusdiv', 'page', 'normal' ); // discussion metabox
+		remove_meta_box( 'commentsdiv',      'page', 'normal' ); // comments metabox
+		# remove_meta_box( 'postcustom',     'page', 'normal' ); // custom fields metabox
+		# remove_meta_box( 'slugdiv',        'page', 'normal' ); // slug metabox (breaks edit permalink update)
+		# remove_meta_box( 'authordiv',      'page', 'normal' ); // author metabox
+		# remove_meta_box( 'revisionsdiv',   'page', 'normal' ); // revisions metabox
+		# remove_meta_box( 'postimagediv',   'page', 'side' );   // featured image metabox
 
 	}
 
@@ -186,7 +195,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeUpdateNotificationNonAdmins() {
+	public function nuke_update_notification_non_admins() {
 
 		if ( ! current_user_can( 'update_core' ) ) {
 
@@ -200,7 +209,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeSelfPings(&$links) {
+	public function nuke_self_pings(&$links) {
 
 		foreach ( $links as $l => $link ) {
 
@@ -217,9 +226,9 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeHelloDolly() {
+	public function nuke_hello_dolly() {
 
-		if ( file_exists( WP_PLUGIN_DIR.'/hello.php' ) ) {
+		if ( file_exists( WP_PLUGIN_DIR . '/hello.php' ) ) {
 
 			delete_plugins( array( 'hello.php' ) );
 
@@ -232,7 +241,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeMoreJumpLinkAnchor( $link ) {
+	public function nuke_more_jump_link_anchor( $link ) {
 
 		$offset = strpos( $link, '#more-' );
 
@@ -253,7 +262,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeContactMethods( $contactMethods ) {
+	public function nuke_contact_methods( $contactMethods ) {
 
 		unset( $contactMethods['yim'] );
 		unset( $contactMethods['aim'] );
@@ -268,7 +277,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function nukeCurlyOtherChars( $fixChars ) {
+	public function nuke_curly_other_chars( $fixChars ) {
 
 		$fixChars = str_replace(
 			array("\xe2\x80\x98", "\xe2\x80\x99", "\xe2\x80\x9c", "\xe2\x80\x9d", "\xe2\x80\x93", "\xe2\x80\x94", "\xe2\x80\xa6"),
