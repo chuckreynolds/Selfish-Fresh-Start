@@ -3,13 +3,13 @@
 Plugin Name:    Selfish Fresh Start
 Plugin URI:     http://wordpress.org/plugins/selfish-fresh-start
 Description:    This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
-Version:        0.8
+Version:        1.0-beta
 Author:         Chuck Reynolds
 Author URI:     http://rynoweb.com/wordpress-plugins/
 License:        GPLv2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2014 Chuck Reynolds (email : chuck@rynoweb.com)
+Copyright 2011-2015 Chuck Reynolds (email : chuck@rynoweb.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -33,8 +33,10 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function __construct() {
+
 		add_action( 'init', array( $this, 'atInit' ) );
 		add_action( 'after_setup_theme', array( $this, 'afterThemeSetup' ) );
+
 	}
 
 	/**
@@ -43,8 +45,10 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function atInit() {
+
 		$this->nukeFileEdit();
 		$this->nukeTrackbacksSmilies();
+
 	}
 
 	/**
@@ -53,6 +57,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function afterThemeSetup() {
+
 		remove_action( 'wp_head', 'rsd_link' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		remove_action( 'wp_head', 'index_rel_link' );
@@ -73,6 +78,7 @@ Class RynoNuke {
 		add_filter( 'user_contactmethods', array( $this, 'nukeContactMethods' ), 10, 1 );
 		add_filter( 'content_save_pre', array( $this, 'nukeCurlyOtherChars' ) );
 		add_filter( 'title_save_pre', array( $this, 'nukeCurlyOtherChars' ) );
+
 	}
 
 	/**
@@ -81,9 +87,11 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeFileEdit() {
+
 		if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 			define( 'DISALLOW_FILE_EDIT', 'true' );
 		}
+
 	}
 
 	/**
@@ -92,6 +100,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeTrackbacksSmilies() {
+
 		$options = array(
 			'default_ping_status'   => 'closed',
 			'default_pingback_flag'	=> 0,
@@ -99,11 +108,15 @@ Class RynoNuke {
 		);
 
 		foreach( $options as $key => $value ) {
+
 			$current = get_option( $key );
+
 			if ( $current != $value ) {
 				update_option( $key, $value );
 			}
+
 		}
+
 	}
 
 	/**
@@ -112,6 +125,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeDashboardBoxes() {
+
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );    // incoming links box
 		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );       // quick press box
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );           // new plugins box
@@ -128,6 +142,7 @@ Class RynoNuke {
 		remove_meta_box( 'rg_forms_dashboard', 'dashboard', 'core' );          // gravity forms
 		remove_meta_box( 'bbp-dashboard-right-now', 'dashboard', 'core' );     // bbpress
 		remove_meta_box( 'jetpack_summary_widget', 'dashboard', 'normal' );    // jetpack
+
 	}
 
 	/**
@@ -136,6 +151,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukePostMetaboxes() {
+
 		remove_meta_box( 'trackbacksdiv', 'post', 'normal' );                  // trackbacks metabox
 		# remove_meta_box( 'postcustom', 'post', 'normal' );                   // custom fields metabox
 		# remove_meta_box( 'postexcerpt', 'post', 'normal' );                  // excerpt metabox
@@ -145,6 +161,7 @@ Class RynoNuke {
 		# remove_meta_box( 'revisionsdiv', 'post', 'normal' );                 // revisions metabox
 		# remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' );             // tags metabox
 		# remove_meta_box( 'categorydiv', 'post', 'normal' );                  // comments metabox
+
 	}
 
 	/**
@@ -153,6 +170,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukePageMetaboxes() {
+
 		remove_meta_box( 'commentstatusdiv', 'page', 'normal' );               // discussion metabox
 		remove_meta_box( 'commentsdiv', 'page', 'normal' );                    // comments metabox
 		# remove_meta_box( 'postcustom', 'page', 'normal' );                   // custom fields metabox
@@ -160,6 +178,7 @@ Class RynoNuke {
 		# remove_meta_box( 'authordiv', 'page', 'normal' );                    // author metabox
 		# remove_meta_box( 'revisionsdiv', 'page', 'normal' );                 // revisions metabox
 		# remove_meta_box( 'postimagediv', 'page', 'side' );                   // featured image metabox
+
 	}
 
 	/**
@@ -168,8 +187,11 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeUpdateNotificationNonAdmins() {
+
 		if ( ! current_user_can( 'update_core' ) ) {
+
 			remove_action( 'admin_notices', 'update_nag', 3 );
+
 		}
 	}
 
@@ -179,10 +201,14 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeSelfPings(&$links) {
+
 		foreach ( $links as $l => $link ) {
+
 			if ( 0 === strpos( $link, get_option( 'home' ) ) ) {
 				unset( $links[$l] );
-		}
+			}
+
+
 		}
 	}
 
@@ -192,9 +218,13 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeHelloDolly() {
+
 		if ( file_exists( WP_PLUGIN_DIR.'/hello.php' ) ) {
+
 			delete_plugins( array( 'hello.php' ) );
+
 		}
+
 	}
 
 	/**
@@ -203,14 +233,19 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeMoreJumpLinkAnchor( $link ) {
+
 		$offset = strpos( $link, '#more-' );
+
 		if ( $offset ) {
 			$end = strpos( $link, '"', $offset );
 		}
+
 		if ( $end ) {
 			$link = substr_replace( $link, '', $offset, $end-$offset );
 		}
+
 		return $link;
+
 	}
 
 	/**
@@ -219,17 +254,13 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeContactMethods( $contactMethods ) {
+
 		unset( $contactMethods['yim'] );
 		unset( $contactMethods['aim'] );
 		unset( $contactMethods['jabber'] );
 
-		// removed in 0.6. see changelog for reason
-		# $contactMethods['rynonuke_twitter']='Twitter';
-		# $contactMethods['rynonuke_facebook']='Facebook';
-		# $contactMethods['rynonuke_googleplus']='Google +';
-		# $contactMethods['rynonuke_linkedin']='LinkedIn';
-
 		return $contactMethods;
+
 	}
 
 	/**
@@ -238,6 +269,7 @@ Class RynoNuke {
 	 * @return void
 	 */
 	public function nukeCurlyOtherChars( $fixChars ) {
+
 		$fixChars = str_replace(
 			array("\xe2\x80\x98", "\xe2\x80\x99", "\xe2\x80\x9c", "\xe2\x80\x9d", "\xe2\x80\x93", "\xe2\x80\x94", "\xe2\x80\xa6"),
 			array("'", "'", '"', '"', '-', '&mdash;', '&hellip;'), $fixChars);
@@ -251,7 +283,9 @@ Class RynoNuke {
 			array('&trade;', '&copy;', '&reg;'), $fixChars);
 
 		return $fixChars;
+
 	}
+
 }
 
 $rynonuke = new RynoNuke;
