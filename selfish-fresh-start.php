@@ -3,7 +3,7 @@
 Plugin Name:    Selfish Fresh Start
 Plugin URI:     http://wordpress.org/plugins/selfish-fresh-start
 Description:    This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
-Version:        1.0-beta
+Version:        1.0
 Author:         Chuck Reynolds
 Author URI:     http://rynoweb.com/wordpress-plugins/
 License:        GPLv2 or later
@@ -34,8 +34,8 @@ Class RynoNuke {
 	 */
 	public function __construct() {
 
-		add_action( 'init', array( $this, 'atInit' ) );
-		add_action( 'after_setup_theme', array( $this, 'afterThemeSetup' ) );
+		add_action( 'init', array( $this, 'nuke_init' ) );
+		add_action( 'after_setup_theme', array( $this, 'nuke_after_theme_setup' ) );
 
 	}
 
@@ -44,10 +44,48 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function atInit() {
+	public function nuke_init() {
 
-		$this->nukeFileEdit();
-		$this->nukeTrackbacksSmilies();
+		$this->nuke_file_edit();
+		$this->nuke_trackbacks_smilies();
+
+	}
+
+	/**
+	 * Removes theme and plugin editor links if not defined already
+	 *
+	 * @return void
+	 */
+	public function nuke_file_edit() {
+
+		if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+			define( 'DISALLOW_FILE_EDIT', 'true' );
+		}
+
+	}
+
+	/**
+	 * Sets db options table flags
+	 *
+	 * @return void
+	 */
+	public function nuke_trackbacks_smilies() {
+
+		$options = array(
+			'default_ping_status'   => 'closed',
+			'default_pingback_flag'	=> 0,
+			'use_smilies'           => 0
+		);
+
+		foreach( $options as $key => $value ) {
+
+			$current = get_option( $key );
+
+			if ( $current != $value ) {
+				update_option( $key, $value );
+			}
+
+		}
 
 	}
 
@@ -56,7 +94,7 @@ Class RynoNuke {
 	 *
 	 * @return void
 	 */
-	public function afterThemeSetup() {
+	public function nuke_after_theme_setup() {
 
 		remove_action( 'wp_head',            'rsd_link' );
 		remove_action( 'wp_head',            'wlwmanifest_link' );
@@ -78,44 +116,6 @@ Class RynoNuke {
 		add_filter( 'user_contactmethods',   array( $this, 'nuke_contact_methods' ), 10, 1 );
 		add_filter( 'content_save_pre',      array( $this, 'nuke_curly_other_chars' ) );
 		add_filter( 'title_save_pre',        array( $this, 'nuke_curly_other_chars' ) );
-
-	}
-
-	/**
-	 * Removes theme and plugin editor links if not defined already
-	 *
-	 * @return void
-	 */
-	public function nukeFileEdit() {
-
-		if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
-			define( 'DISALLOW_FILE_EDIT', 'true' );
-		}
-
-	}
-
-	/**
-	 * Sets db options table flags
-	 *
-	 * @return void
-	 */
-	public function nukeTrackbacksSmilies() {
-
-		$options = array(
-			'default_ping_status'   => 'closed',
-			'default_pingback_flag'	=> 0,
-			'use_smilies'           => 0
-		);
-
-		foreach( $options as $key => $value ) {
-
-			$current = get_option( $key );
-
-			if ( $current != $value ) {
-				update_option( $key, $value );
-			}
-
-		}
 
 	}
 

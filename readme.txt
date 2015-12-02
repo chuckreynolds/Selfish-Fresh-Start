@@ -4,14 +4,14 @@ Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
 Requires at least: 3.0
 Tested up to: 4.4
-Stable tag: 1-beta
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Built to run on EVERY install you have, fresh start removes unneeded admin clutter and sets up the needed settings for every site.
 
 == Description ==
-This WordPress plugin removes some, in my opinion, unused crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
+This WordPress plugin removes some, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
 
 If you think you'd like to contribute via Pull Request: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
 
@@ -23,7 +23,7 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 	* rsd links
 	* previous and next post links
 	* wordpress generator
-	* shortlink
+	* shortlink generation
 * Removed: admin dashboard widgets:
 	* quick press
 	* recent drafts
@@ -31,6 +31,12 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 	* wordpress development blog feed
 	* other wordpress blog news feed
 	* incoming links box
+	* yoast seo overview box
+	* wp socializer box
+	* w3 total cache news box
+	* gravity forms box
+	* bpress right now in forums
+	* jetpack box
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
@@ -47,12 +53,27 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 * Off: turn off global trackback/pingback setting
 * Off: turn off global formatting of text to graphic smilies
 
+= Additional Functionality =
+* Do you use Yoast SEO? and don't need all the beginner / noob stuff? Use this plugin: [Yoast SEO Nuke Noob Stuff](https://wordpress.org/plugins/wpseo-nuke-noob-stuff/)
+* Emojis scripts and support removal? I almost included it in this plugin but just use this plugin: [Disable Emojis](https://wordpress.org/plugins/disable-emojis/)
+* Want to remove the Tools Menu? There's a plugin for that: [Remove Tools Menu](https://wordpress.org/plugins/remove-tools-menu/)
+
 == Installation ==
 1. Upload the `selfish-fresh-start` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 1.0 =
+
+Release Date - 2015-12-02
+
+* tested to WP 4.4
+* updated some functions to fire at a more appropriate time on load
+* updated some metabox names that have changed
+* content in this readme updated
+* simple branding images for wp plugin repo
+
 = 0.8 =
 * fixes an ajax warning in admin area. nbd.
 
@@ -90,12 +111,7 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
-= 0.6.1 =
-Some new features and cleaner code. overall a pretty big update.
-= 0.5 =
-Some sites reporting issues w/ comments always off on posts. put back comment div for now until more testing.
-= 0.2 =
-Added additional features, one of which helps secure your WP site. Always stay up to date!
+
 
 == Other Notes ==
 * Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to do pull requests or add issues on github: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
