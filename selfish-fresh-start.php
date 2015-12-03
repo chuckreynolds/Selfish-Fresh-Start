@@ -5,7 +5,7 @@ Plugin URI:     http://wordpress.org/plugins/selfish-fresh-start
 Description:    Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
 Version:        1.0
 Author:         Chuck Reynolds
-Author URI:     http://rynoweb.com/wordpress-plugins/
+Author URI:     https://chuckreynolds.us
 License:        GPLv2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 
