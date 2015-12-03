@@ -71,11 +71,9 @@ Release Date - 2015-12-02
 * tested to WP 4.4
 * updated some functions to fire at a more appropriate time on load
 * updated some metabox names that have changed
+* fixes an ajax warning in admin area. nbd.
 * content in this readme updated
 * simple branding images for wp plugin repo
-
-= 0.8 =
-* fixes an ajax warning in admin area. nbd.
 
 = 0.7 =
 * removed dashboard widgets: bbpress, gravity forms
