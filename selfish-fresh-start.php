@@ -1,31 +1,26 @@
 <?php
-/*
-Plugin Name:    Selfish Fresh Start
-Plugin URI:     http://wordpress.org/plugins/selfish-fresh-start
-Description:    Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
-Version:        1.0
-Author:         Chuck Reynolds
-Author URI:     https://chuckreynolds.us
-License:        GPLv2 or later
-License URI:    http://www.gnu.org/licenses/gpl-2.0.html
-
-Copyright 2011-2015 Chuck Reynolds (email : chuck@rynoweb.com)
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-*/
 
 Class RynoNuke {
+/**
+ * @link         https://chuckreynolds.us
+ * @since        1.0.0
+ * @package      Selfish_Fresh_Start
+ *
+ * Plugin Name:  Selfish Fresh Start
+ * Plugin URI:   http://wordpress.org/plugins/selfish-fresh-start
+ * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
+ * Version:      1.0
+ * Author:       Chuck Reynolds
+ * Author URI:   https://chuckreynolds.us
+ * License:      GPL-2.0+
+ * License URI:  http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:  selfish-fresh-start
+ */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 	/**
 	 * This is the constructor for RynoNuke Class
@@ -139,7 +134,7 @@ Class RynoNuke {
 
 	/**
 	 * Removes some plugin dashboard widgets.
-	 * yup i'm goin there. sorry not sorry.
+	 * Yup I'm goin there. Sorry not sorry.
 	 *
 	 * @return void
 	 */
@@ -162,14 +157,14 @@ Class RynoNuke {
 	public function nuke_post_metaboxes() {
 
 		remove_meta_box( 'trackbacksdiv',      'post', 'normal' ); // trackbacks metabox
-		# remove_meta_box( 'postcustom',       'post', 'normal' ); // custom fields metabox
-		# remove_meta_box( 'postexcerpt',      'post', 'normal' ); // excerpt metabox
-		# remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // comments metabox
-		# remove_meta_box( 'slugdiv',          'post', 'normal' ); // slug metabox (breaks edit permalink update)
-		# remove_meta_box( 'authordiv',        'post', 'normal' ); // author metabox
-		# remove_meta_box( 'revisionsdiv',     'post', 'normal' ); // revisions metabox
-		# remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' ); // tags metabox
-		# remove_meta_box( 'categorydiv',      'post', 'normal' ); // comments metabox
+		#remove_meta_box( 'postcustom',       'post', 'normal' ); // custom fields metabox
+		#remove_meta_box( 'postexcerpt',      'post', 'normal' ); // excerpt metabox
+		#remove_meta_box( 'commentstatusdiv', 'post', 'normal' ); // comments metabox
+		#remove_meta_box( 'slugdiv',          'post', 'normal' ); // slug metabox (breaks edit permalink update)
+		#remove_meta_box( 'authordiv',        'post', 'normal' ); // author metabox
+		#remove_meta_box( 'revisionsdiv',     'post', 'normal' ); // revisions metabox
+		#remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' ); // tags metabox
+		#remove_meta_box( 'categorydiv',      'post', 'normal' ); // comments metabox
 
 	}
 
@@ -182,11 +177,11 @@ Class RynoNuke {
 
 		remove_meta_box( 'commentstatusdiv', 'page', 'normal' ); // discussion metabox
 		remove_meta_box( 'commentsdiv',      'page', 'normal' ); // comments metabox
-		# remove_meta_box( 'postcustom',     'page', 'normal' ); // custom fields metabox
-		# remove_meta_box( 'slugdiv',        'page', 'normal' ); // slug metabox (breaks edit permalink update)
-		# remove_meta_box( 'authordiv',      'page', 'normal' ); // author metabox
-		# remove_meta_box( 'revisionsdiv',   'page', 'normal' ); // revisions metabox
-		# remove_meta_box( 'postimagediv',   'page', 'side' );   // featured image metabox
+		#remove_meta_box( 'postcustom',     'page', 'normal' ); // custom fields metabox
+		#remove_meta_box( 'slugdiv',        'page', 'normal' ); // slug metabox (breaks edit permalink update)
+		#remove_meta_box( 'authordiv',      'page', 'normal' ); // author metabox
+		#remove_meta_box( 'revisionsdiv',   'page', 'normal' ); // revisions metabox
+		#remove_meta_box( 'postimagediv',   'page', 'side' );   // featured image metabox
 
 	}
 
@@ -198,10 +193,9 @@ Class RynoNuke {
 	public function nuke_update_notification_non_admins() {
 
 		if ( ! current_user_can( 'update_core' ) ) {
-
 			remove_action( 'admin_notices', 'update_nag', 3 );
-
 		}
+
 	}
 
 	/**
@@ -212,13 +206,11 @@ Class RynoNuke {
 	public function nuke_self_pings(&$links) {
 
 		foreach ( $links as $l => $link ) {
-
 			if ( 0 === strpos( $link, get_option( 'home' ) ) ) {
 				unset( $links[$l] );
 			}
-
-
 		}
+
 	}
 
 	/**
@@ -229,9 +221,7 @@ Class RynoNuke {
 	public function nuke_hello_dolly() {
 
 		if ( file_exists( WP_PLUGIN_DIR . '/hello.php' ) ) {
-
 			delete_plugins( array( 'hello.php' ) );
-
 		}
 
 	}
