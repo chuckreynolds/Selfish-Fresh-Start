@@ -5,15 +5,15 @@ Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta bo
 Requires at least: 3.0
 Tested up to: 4.7.3
 Stable tag: 1.1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
 Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
 == Description ==
 This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
 
-If you think you'd like to contribute via Pull Request: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
+If you think you'd like to contribute, Pull Requests on [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop) are accepted.
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:

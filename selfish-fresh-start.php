@@ -1,15 +1,13 @@
 <?php
-
-Class RynoNuke {
 /**
  * @link         https://chuckreynolds.us
- * @since        1.0.0
+ * @since        1.1.0
  * @package      Selfish_Fresh_Start
  *
  * Plugin Name:  Selfish Fresh Start
- * Plugin URI:   http://wordpress.org/plugins/selfish-fresh-start
+ * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
- * Version:      1.0
+ * Version:      1.1.0
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.us
  * License:      GPL-2.0+
@@ -22,8 +20,17 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * The core plugin class. Does all the things.
+ *
+ * @since       1.0.0
+ * @package     Selfish_Fresh_Start
+ * @author      Chuck Reynolds <chuck@rynoweb.com>
+ */
+class Selfish_Fresh_Start {
+
 	/**
-	 * This is the constructor for RynoNuke Class
+	 * Construct for Selfish_Fresh_Start class
 	 *
 	 * @return void
 	 */
@@ -62,7 +69,9 @@ if ( ! defined( 'WPINC' ) ) {
 	/**
 	 * Sets db options table flags
 	 *
-	 * @return void
+	 * @return string Closed: Disallow pingbacks and trackbacks from other blogs
+	 * @return int    No: Attempt to notify any blogs linked to from the article
+	 * @return int    No: Convert emoticons like :-) and :P to graphics when displayed
 	 */
 	public function nuke_trackbacks_smilies() {
 
@@ -120,9 +129,10 @@ if ( ! defined( 'WPINC' ) ) {
 	public function nuke_dashboard_metaboxes() {
 
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box
-		remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box
-		#remove_meta_box('dashboard_right_now',       'dashboard', 'normal');  // Right Now
-    	#remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');  // Recent Comments
+		remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box sub
+		#remove_meta_box('dashboard_right_now',       'dashboard', 'normal');  // at a glance box
+		#remove_meta_box('dashboard_activity',        'dashboard', 'normal');  // activity box
+    	#remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');  // recent comments sub
 		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // quick draft box
 		remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts box
 		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // wordpress news blog box
@@ -285,4 +295,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 }
 
-$rynonuke = new RynoNuke;
+/**
+ * Begins execution of the plugin
+ *
+ * @since       1.1.0
+ */
+function run_selfish_fresh_start() {
+
+	$plugin = new Selfish_Fresh_Start();
+
+}
+run_selfish_fresh_start();
