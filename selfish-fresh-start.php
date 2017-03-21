@@ -273,7 +273,7 @@ class Selfish_Fresh_Start {
 	/**
 	 * Fixes curly quotes and badly formatted characters. One of my bigger pet peeves is curly quotes from word pastes
 	 *
-	 * @return void
+	 * @return string clean formated characters
 	 */
 	public function nuke_curly_other_chars( $fixChars ) {
 
