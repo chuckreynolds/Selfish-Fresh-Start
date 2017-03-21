@@ -13,8 +13,6 @@ Built to run on EVERY WordPress install, selfish fresh start removes unneeded ad
 == Description ==
 This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
 
-If you think you'd like to contribute, Pull Requests on [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop) are accepted.
-
 = Current Operations =
 * Removed: clean up unneeded header tags including:
 	* wlw manifest links
@@ -55,6 +53,9 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 * Do you use Yoast SEO? and don't need all the beginner / noob stuff? Use this plugin: [Yoast SEO Nuke Noob Stuff](https://wordpress.org/plugins/wpseo-nuke-noob-stuff/)
 * Emojis scripts and support removal? I almost included it in this plugin but just use this plugin: [Disable Emojis](https://wordpress.org/plugins/disable-emojis/)
 * Want to remove the Tools Menu? There's a plugin for that: [Remove Tools Menu](https://wordpress.org/plugins/remove-tools-menu/)
+
+= Development =
+If you think you'd like to contribute, Pull Requests on [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop) are accepted.
 
 == Installation ==
 1. Upload the `selfish-fresh-start` folder to the `/wp-content/plugins/` directory
