@@ -3,22 +3,20 @@ Contributors: ryno267
 Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
 Requires at least: 3.0
-Tested up to: 4.4
-Stable tag: 1.0
+Tested up to: 4.7.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Built to run on EVERY install you have, fresh start removes unneeded admin clutter and sets up the needed settings for every site.
+Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
 == Description ==
-This WordPress plugin removes some, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and nukes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it'll work with every site as a good clean-up fresh start and help keep clients out of the edit menus.
+This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
 
 If you think you'd like to contribute via Pull Request: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:
-	* index relation links
-	* start relation links
 	* wlw manifest links
 	* rsd links
 	* previous and next post links
@@ -64,6 +62,13 @@ If you think you'd like to contribute via Pull Request: [Develop Branch on Githu
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 1.1.0 =
+
+Release Date - 2017-03-21
+
+* tested up to WP 4.7.3
+* removed a couple deprecated calls but they didn't cause problems
+
 = 1.0 =
 
 Release Date - 2015-12-02
