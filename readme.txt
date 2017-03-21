@@ -3,7 +3,7 @@ Contributors: ryno267
 Donate link: http://rynoweb.com/wordpress-plugins/
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
 Requires at least: 3.0
-Tested up to: 4.7.3
+Tested up to: 4.8
 Stable tag: 1.1.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -67,6 +67,7 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 
 Release Date - 2017-03-21
 
+* new super duper plugin image assets for wp repo
 * tested up to WP 4.7.3
 * removed a couple deprecated calls but they didn't cause problems
 
