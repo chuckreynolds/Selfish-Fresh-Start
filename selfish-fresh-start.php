@@ -115,7 +115,6 @@ class Selfish_Fresh_Start {
 		add_action( 'pre_ping',              array( $this, 'nuke_self_pings' ) );
 		add_action( 'admin_init',            array( $this, 'nuke_hello_dolly' ) );
 		add_filter( 'the_content_more_link', array( $this, 'nuke_more_jump_link_anchor' ) );
-		add_filter( 'user_contactmethods',   array( $this, 'nuke_contact_methods' ), 10, 1 );
 		add_filter( 'content_save_pre',      array( $this, 'nuke_curly_other_chars' ) );
 		add_filter( 'title_save_pre',        array( $this, 'nuke_curly_other_chars' ) );
 
@@ -252,21 +251,6 @@ class Selfish_Fresh_Start {
 		}
 
 		return $link;
-
-	}
-
-	/**
-	 * Removes obsolete profile fields
-	 *
-	 * @return void
-	 */
-	public function nuke_contact_methods( $contactMethods ) {
-
-		unset( $contactMethods['yim'] );
-		unset( $contactMethods['aim'] );
-		unset( $contactMethods['jabber'] );
-
-		return $contactMethods;
 
 	}
 
