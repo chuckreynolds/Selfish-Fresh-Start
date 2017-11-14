@@ -7,7 +7,7 @@
  * Plugin Name:  Selfish Fresh Start
  * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
- * Version:      1.1.0
+ * Version:      1.2.0
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.us
  * License:      GPL-2.0+

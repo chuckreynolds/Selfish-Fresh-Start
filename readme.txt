@@ -2,9 +2,9 @@
 Contributors: ryno267
 Donate link: https://cash.me/$chuckreynolds
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
-Tested up to: 4.8
-Stable tag: 1.1.0
 Requires at least: 4.0
+Tested up to: 4.9
+Stable tag: 1.2.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
