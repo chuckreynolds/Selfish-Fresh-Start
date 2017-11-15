@@ -154,7 +154,6 @@ class Selfish_Fresh_Start {
 		remove_meta_box( 'bbp-dashboard-right-now',  'dashboard', 'normal' ); // bbpress right now in forums
 		remove_meta_box( 'jetpack_summary_widget',   'dashboard', 'normal' ); // jetpack
 		remove_meta_box( 'tribe_dashboard_widget',   'dashboard', 'normal' ); // modern tribe rss widget
-		#remove_meta_box( 'meandmymac_rss_widget',    'dashboard', 'normal' ); // wp-events rss widget
 
 	}
 

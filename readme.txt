@@ -34,7 +34,6 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 	* bpress right now in forums
 	* jetpack box
 	* modern tribe rss box (issues/7)
-	* wp-events rss box (issues/9)
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
@@ -70,6 +69,7 @@ Release Date - 2017-11-14
 
 * tested up to WP 4.9
 * removed the removing of old IM fields; no longer a problem in modern WP installs
+* removed, by request, another news rss feed dashboard box; this one from moderntribe plugins
 
 = 1.1.0 =
 
