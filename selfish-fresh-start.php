@@ -127,15 +127,18 @@ class Selfish_Fresh_Start {
 	 */
 	public function nuke_dashboard_metaboxes() {
 
-		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box
-		remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box sub
-		#remove_meta_box('dashboard_right_now',       'dashboard', 'normal');  // at a glance box
-		#remove_meta_box('dashboard_activity',        'dashboard', 'normal');  // activity box
-    	#remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');  // recent comments sub
-		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // quick draft box
-		remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts box
-		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // wordpress news blog box
-		remove_meta_box( 'dashboard_secondary',      'dashboard', 'side' );   // other wordpress news box
+		#remove_meta_box( 'dashboard_right_now',      'dashboard', 'normal' );  // At a Glance
+		#remove_meta_box( 'network_dashboard_right_now', 'dashboard', 'normal' ); // Network Right Now
+		#remove_meta_box( 'dashboard_activity',       'dashboard', 'normal' );  // Activity
+		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // Quick Draft / Your Recent Drafts
+		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // WordPress Events and News
+
+		// from older than WP ~4.0 versions
+		#remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box (deprecated in 3.8)
+		#remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box (deprecated in 3.8)
+		#remove_meta_box( 'dashboard_recent_comments','dashboard', 'normal' );  // recent comments sub (now part of activity)
+		#remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts (now part of quick_press)
+		#remove_meta_box( 'dashboard_secondary',      'dashboard', 'side' );   // other wordpress news (deprecated in 3.8)
 
 	}
 

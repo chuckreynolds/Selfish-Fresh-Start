@@ -1,7 +1,7 @@
 === Selfish Fresh Start ===
 Contributors: ryno267
 Donate link: https://cash.me/$chuckreynolds
-Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, profile fields, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor, aim, jabber, yim
+Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, file editor, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: 1.2.0
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
 == Description ==
-This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post & page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly, removes junk header tags including the generator tag for extra security, removes update notifications for non-admins, removes old user profile fields like aim, prevents self pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
+This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post and page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly plugin, removes junk header tags, removes generator header tag for extra security, removes update notifications for non-admins, prevents self-pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:
@@ -21,31 +21,28 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 	* wordpress generator
 	* shortlink generation
 * Removed: admin dashboard widgets:
-	* quick press
-	* recent drafts
-	* recent plugins feed
-	* wordpress development blog feed
-	* other wordpress blog news feed
-	* incoming links box
-	* yoast seo overview box
-	* wp socializer box
-	* w3 total cache news box
-	* gravity forms box
-	* bpress right now in forums
-	* jetpack box
-	* modern tribe rss box (issues/7)
+	* core: quick draft / your recent drafts
+	* core: wordpress events and news
+	* plugin: yoast seo overview box
+	* plugin: wp socializer box
+	* plugin: w3 total cache news box
+	* plugin: gravity forms box
+	* plugin: bpress right now in forums
+	* plugin: jetpack box
+	* plugin: modern tribe rss box (issues/7)
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
 	* comments box
 	* discussion box
-* Removed: appearance menu theme editor *(some ppl may not like this but it's great for client admins)*
+* Removed: appearance menu theme editor
 * Removed: plugins editor menu
 * Removed: plugins list edit links
 * Removed: more jump link to #anchor
 * Removed: update notifications for non-admin users
 * Removed: potential for self ping backs
 * Removed: checks for and nukes Hello Dolly plugin *(sorry @photomatt)*
+* Off: turn off plugin/theme editor
 * Off: turn off global trackback/pingback setting
 * Off: turn off global formatting of text to graphic smilies
 
@@ -68,7 +65,9 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 Release Date - 2017-11-14
 
 * tested up to WP 4.9
-* removed the removing of old IM fields; no longer a problem in modern WP installs
+* removed the removing of old IM profile fields that have been deprecated
+* removed the removing of old dashboard widgets that have been merged or deprecated
+* updated the minimum required version of WP to 4.0 due to the deprecated widgets
 * removed, by request, another news rss feed dashboard box; this one from moderntribe plugins
 
 = 1.1.0 =
