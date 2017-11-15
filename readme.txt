@@ -45,7 +45,6 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: update notifications for non-admin users
 * Removed: potential for self ping backs
 * Removed: checks for and nukes Hello Dolly plugin *(sorry @photomatt)*
-* Removed: admin user yim, aim, jabber fields
 * Off: turn off global trackback/pingback setting
 * Off: turn off global formatting of text to graphic smilies
 
@@ -63,6 +62,13 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 1.2.0 =
+
+Release Date - 2017-11-14
+
+* tested up to WP 4.9
+* removed the removing of old IM fields; no longer a problem in modern WP installs
+
 = 1.1.0 =
 
 Release Date - 2017-03-21
