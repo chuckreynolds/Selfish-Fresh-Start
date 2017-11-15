@@ -33,6 +33,8 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 	* gravity forms box
 	* bpress right now in forums
 	* jetpack box
+	* modern tribe rss box (issues/7)
+	* wp-events rss box (issues/9)
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
