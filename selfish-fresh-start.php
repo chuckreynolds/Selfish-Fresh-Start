@@ -7,7 +7,7 @@
  * Plugin Name:  Selfish Fresh Start
  * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
- * Version:      1.1.0
+ * Version:      1.2.0
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.us
  * License:      GPL-2.0+
@@ -115,7 +115,6 @@ class Selfish_Fresh_Start {
 		add_action( 'pre_ping',              array( $this, 'nuke_self_pings' ) );
 		add_action( 'admin_init',            array( $this, 'nuke_hello_dolly' ) );
 		add_filter( 'the_content_more_link', array( $this, 'nuke_more_jump_link_anchor' ) );
-		add_filter( 'user_contactmethods',   array( $this, 'nuke_contact_methods' ), 10, 1 );
 		add_filter( 'content_save_pre',      array( $this, 'nuke_curly_other_chars' ) );
 		add_filter( 'title_save_pre',        array( $this, 'nuke_curly_other_chars' ) );
 
@@ -128,15 +127,18 @@ class Selfish_Fresh_Start {
 	 */
 	public function nuke_dashboard_metaboxes() {
 
-		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box
-		remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box sub
-		#remove_meta_box('dashboard_right_now',       'dashboard', 'normal');  // at a glance box
-		#remove_meta_box('dashboard_activity',        'dashboard', 'normal');  // activity box
-    	#remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');  // recent comments sub
-		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // quick draft box
-		remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts box
-		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // wordpress news blog box
-		remove_meta_box( 'dashboard_secondary',      'dashboard', 'side' );   // other wordpress news box
+		#remove_meta_box( 'dashboard_right_now',      'dashboard', 'normal' );  // At a Glance
+		#remove_meta_box( 'network_dashboard_right_now', 'dashboard', 'normal' ); // Network Right Now
+		#remove_meta_box( 'dashboard_activity',       'dashboard', 'normal' );  // Activity
+		remove_meta_box( 'dashboard_quick_press',    'dashboard', 'side' );   // Quick Draft / Your Recent Drafts
+		remove_meta_box( 'dashboard_primary',        'dashboard', 'side' );   // WordPress Events and News
+
+		// from older than WP ~4.0 versions
+		#remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' ); // incoming links box (deprecated in 3.8)
+		#remove_meta_box( 'dashboard_plugins',        'dashboard', 'normal' ); // new plugins box (deprecated in 3.8)
+		#remove_meta_box( 'dashboard_recent_comments','dashboard', 'normal' );  // recent comments sub (now part of activity)
+		#remove_meta_box( 'dashboard_recent_drafts',  'dashboard', 'side' );   // recent drafts (now part of quick_press)
+		#remove_meta_box( 'dashboard_secondary',      'dashboard', 'side' );   // other wordpress news (deprecated in 3.8)
 
 	}
 
@@ -154,6 +156,7 @@ class Selfish_Fresh_Start {
 		remove_meta_box( 'rg_forms_dashboard',       'dashboard', 'normal' ); // gravity forms
 		remove_meta_box( 'bbp-dashboard-right-now',  'dashboard', 'normal' ); // bbpress right now in forums
 		remove_meta_box( 'jetpack_summary_widget',   'dashboard', 'normal' ); // jetpack
+		remove_meta_box( 'tribe_dashboard_widget',   'dashboard', 'normal' ); // modern tribe rss widget
 
 	}
 
@@ -252,21 +255,6 @@ class Selfish_Fresh_Start {
 		}
 
 		return $link;
-
-	}
-
-	/**
-	 * Removes obsolete profile fields
-	 *
-	 * @return void
-	 */
-	public function nuke_contact_methods( $contactMethods ) {
-
-		unset( $contactMethods['yim'] );
-		unset( $contactMethods['aim'] );
-		unset( $contactMethods['jabber'] );
-
-		return $contactMethods;
 
 	}
 
