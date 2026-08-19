@@ -7,7 +7,9 @@
  * Plugin Name:  Selfish Fresh Start
  * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
- * Version:      1.2.0
+ * Version:      1.3.0
+ * Requires at least: 4.0
+ * Requires PHP: 7.4
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.us
  * License:      GPL-2.0+
@@ -61,7 +63,7 @@ class Selfish_Fresh_Start {
 	public function nuke_file_edit() {
 
 		if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
-			define( 'DISALLOW_FILE_EDIT', 'true' );
+			define( 'DISALLOW_FILE_EDIT', true );
 		}
 
 	}
@@ -157,6 +159,9 @@ class Selfish_Fresh_Start {
 		remove_meta_box( 'bbp-dashboard-right-now',  'dashboard', 'normal' ); // bbpress right now in forums
 		remove_meta_box( 'jetpack_summary_widget',   'dashboard', 'normal' ); // jetpack
 		remove_meta_box( 'tribe_dashboard_widget',   'dashboard', 'normal' ); // modern tribe rss widget
+		remove_meta_box( 'aioseo-rss-feed',          'dashboard', 'normal' ); // all in one seo news
+		remove_meta_box( 'semperplugins-rss-feed',   'dashboard', 'normal' ); // all in one seo news (old id)
+		remove_meta_box( 'thesis_news_widget',       'dashboard', 'normal' ); // thesis news
 
 	}
 
@@ -231,8 +236,22 @@ class Selfish_Fresh_Start {
 	 */
 	public function nuke_hello_dolly() {
 
+		if ( ! current_user_can( 'delete_plugins' ) ) {
+			return;
+		}
+
+		$plugins = array();
+
 		if ( file_exists( WP_PLUGIN_DIR . '/hello.php' ) ) {
-			delete_plugins( array( 'hello.php' ) );
+			$plugins[] = 'hello.php';
+		}
+
+		if ( file_exists( WP_PLUGIN_DIR . '/hello-dolly/hello.php' ) ) {
+			$plugins[] = 'hello-dolly/hello.php';
+		}
+
+		if ( $plugins ) {
+			delete_plugins( $plugins );
 		}
 
 	}
@@ -244,15 +263,7 @@ class Selfish_Fresh_Start {
 	 */
 	public function nuke_more_jump_link_anchor( $link ) {
 
-		$offset = strpos( $link, '#more-' );
-
-		if ( $offset ) {
-			$end = strpos( $link, '"', $offset );
-		}
-
-		if ( $end ) {
-			$link = substr_replace( $link, '', $offset, $end-$offset );
-		}
+		$link = preg_replace( '|#more-[0-9]+|', '', $link );
 
 		return $link;
 

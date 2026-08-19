@@ -3,8 +3,9 @@ Contributors: ryno267
 Donate link: https://cash.me/$chuckreynolds
 Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, file editor, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
 Requires at least: 4.0
-Tested up to: 4.9
-Stable tag: 1.2.0
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 1.3.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -30,6 +31,8 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 	* plugin: bpress right now in forums
 	* plugin: jetpack box
 	* plugin: modern tribe rss box (issues/7)
+	* plugin: all in one seo news box (issues/11)
+	* plugin: thesis news box (issues/13)
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
@@ -60,6 +63,21 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
+= 1.3.0 =
+
+Release Date - 2026-08-19
+
+* tested up to WP 7.1
+* requires PHP 7.4 (WordPress 7.1 minimum)
+* fixed more-link `#more-` stripping via preg_replace, which also fixes the undefined `$end` notice (issues/12, issues/15)
+* Hello Dolly removal now covers both bundled `hello.php` and the `hello-dolly` plugin directory, and only runs for users who can delete plugins
+* `DISALLOW_FILE_EDIT` is now defined as boolean `true`
+* core dashboard widget IDs/contexts verified against WP 7.1 (Quick Draft and Events and News are still the ones removed)
+* `wlwmanifest_link` was removed from WordPress core in 6.3; the unhook stays for older WP
+* `adjacent_posts_rel_link_wp_head` is no longer hooked in core; the unhook stays for older WP
+* removed all in one seo news dashboard widget (issues/11)
+* removed thesis news dashboard widget (issues/13)
+
 = 1.2.0 =
 
 Release Date - 2017-11-14
@@ -123,7 +141,8 @@ Release Date - 2015-12-02
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
-
+= 1.3.0 =
+Tested up to WordPress 7.1. Fixes the more-link PHP notice. Hello Dolly and dashboard widget cleanup updated.
 
 == Other Notes ==
 * Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to do pull requests or add issues on github: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
