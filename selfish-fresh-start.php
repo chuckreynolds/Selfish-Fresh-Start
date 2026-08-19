@@ -88,7 +88,7 @@ class Selfish_Fresh_Start {
 	}
 
 	/**
-	 * Force discussion/smilie flags. Core options, hardcoded values, admins only.
+	 * Force ping/trackback flags. Core options, hardcoded values, admins only.
 	 *
 	 * @return void
 	 */
@@ -99,9 +99,8 @@ class Selfish_Fresh_Start {
 		}
 
 		$options = array(
-			'default_ping_status'  => 'closed',
+			'default_ping_status'   => 'closed',
 			'default_pingback_flag' => 0,
-			'use_smilies'          => 0,
 		);
 
 		foreach ( $options as $key => $value ) {
@@ -115,17 +114,16 @@ class Selfish_Fresh_Start {
 	}
 
 	/**
-	 * Strip leftover cruft from wp_head. Harmless no-ops if core already dropped them.
+	 * Strip leftover cruft from wp_head, plus the shortlink HTTP header.
 	 *
 	 * @return void
 	 */
 	public function nuke_wp_head() {
 
 		remove_action( 'wp_head', 'rsd_link' );
-		remove_action( 'wp_head', 'wlwmanifest_link' );
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
 		remove_action( 'wp_head', 'wp_generator' );
 		remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+		remove_action( 'template_redirect', 'wp_shortlink_header', 11 );
 
 	}
 
@@ -206,7 +204,6 @@ class Selfish_Fresh_Start {
 
 		$boxes = array(
 			'wpseo-dashboard-overview', // Yoast SEO Posts Overview
-			'jetpack_summary_widget',   // Jetpack Stats
 			'tribe_dashboard_widget',   // The Events Calendar news
 			'aioseo-rss-feed',          // All in One SEO news
 		);

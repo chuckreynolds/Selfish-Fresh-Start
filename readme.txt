@@ -12,20 +12,17 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
 == Description ==
-This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post and page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly plugin, removes junk header tags, removes generator header tag for extra security, removes update notifications for non-admins, prevents self-pinging, removes smilies and trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
+This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post and page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly plugin, removes junk header tags, removes generator header tag for extra security, removes update notifications for non-admins, prevents self-pinging, removes trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:
-	* wlw manifest links
 	* rsd links
-	* previous and next post links
 	* wordpress generator
-	* shortlink generation
+	* shortlink in head and the shortlink HTTP header
 * Removed: admin dashboard widgets:
 	* core: quick draft / your recent drafts
 	* core: wordpress events and news
 	* plugin: yoast seo posts overview
-	* plugin: jetpack stats
 	* plugin: the events calendar news
 	* plugin: all in one seo news
 * Removed: post metabox's
@@ -43,17 +40,17 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: checks for and nukes Hello Dolly plugin *(sorry @photomatt)*
 * Off: turn off plugin/theme editor
 * Off: turn off global trackback/pingback setting
-* Off: turn off global formatting of text to graphic smilies
 
 = Additional Functionality =
-* Do you use Yoast SEO? and don't need all the beginner / noob stuff? Use this plugin: [Yoast SEO Nuke Noob Stuff](https://wordpress.org/plugins/wpseo-nuke-noob-stuff/)
 * Emojis scripts and support removal? I almost included it in this plugin but just use this plugin: [Disable Emojis](https://wordpress.org/plugins/disable-emojis/)
 * Want to remove the Tools Menu? There's a plugin for that: [Remove Tools Menu](https://wordpress.org/plugins/remove-tools-menu/)
+* Want the post/page slug visible in the admin list? [Admin Slug Column](https://wordpress.org/plugins/admin-slug-column/)
+* Want the posts list to default to Published instead of All? [Filter Admin Published Default](https://wordpress.org/plugins/filter-admin-published-default/)
 
 = Development =
 1.3.0 is currently beta (`1.3.0-beta1`) and is not the WordPress.org stable tag. Stable remains 1.2.0 until this ships.
 
-If you think you'd like to contribute, Pull Requests on [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop) are accepted.
+Found a bug or have an idea? Open an issue: [GitHub Issues](https://github.com/chuckreynolds/Selfish-Fresh-Start/issues)
 
 == Installation ==
 1. Upload the `selfish-fresh-start` folder to the `/wp-content/plugins/` directory
@@ -68,7 +65,7 @@ Release Date - 2026-08-19 (beta, not shipped)
 * tested up to WP 7.1
 * requires PHP 7.4 (WordPress 7.1 minimum)
 * admin-only hooks no longer register on the frontend
-* discussion/smilie options are written only by users with `manage_options`, on admin_init and activation, never on public requests
+* ping/trackback options are written only by users with `manage_options`, on admin_init and activation, never on public requests
 * Hello Dolly is deactivated first; files are deleted only when the filesystem method is `direct` so admin pages cannot be replaced by a credentials form
 * Hello Dolly removal covers bundled `hello.php` and the `hello-dolly` plugin directory
 * `DISALLOW_FILE_EDIT` is defined as boolean `true` at plugin load
@@ -77,10 +74,11 @@ Release Date - 2026-08-19 (beta, not shipped)
 * post/page metabox removal runs on `add_meta_boxes_{type}` after core registers the boxes
 * plugin dashboard widgets are removed on the dashboard screen only, both normal and side contexts
 * core dashboard widget IDs/contexts verified against WP 7.1 (Quick Draft and Events and News are still the ones removed)
-* `wlwmanifest_link` was removed from WordPress core in 6.3; the unhook stays for older WP
-* `adjacent_posts_rel_link_wp_head` is no longer hooked in core; the unhook stays for older WP
-* third-party dashboard widgets checked against current plugins: keep Yoast, Jetpack Stats, The Events Calendar news, All in One SEO news
-* Gravity Forms dashboard widget is left in place
+* dropped `wlwmanifest_link` and adjacent-posts rel unhooks; both are gone from core before 6.8
+* third-party dashboard widgets: Yoast, The Events Calendar news, All in One SEO news
+* Gravity Forms and Jetpack Stats dashboard widgets are left in place
+* no longer forces `use_smilies` off
+* also removes the shortlink HTTP header (`wp_shortlink_header`)
 * jquery-migrate stripped from the frontend `jquery` handle; wp-admin is unchanged
 * dropped dead IDs: WP Socializer (`aw_dashboard`), W3 Total Cache WP-dashboard news (`w3tc_latest`; their news box now lives on the W3TC dashboard), bbPress Right Now (`bbp-dashboard-right-now`; stats moved into At a Glance in 2.6), Thesis news, old AIOSEO `semperplugins-rss-feed` id
 
@@ -149,4 +147,4 @@ Release Date - 2015-12-02
 == Upgrade Notice ==
 
 == Other Notes ==
-* Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to do pull requests or add issues on github: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
+* Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Bugs and ideas go here: [GitHub Issues](https://github.com/chuckreynolds/Selfish-Fresh-Start/issues)
