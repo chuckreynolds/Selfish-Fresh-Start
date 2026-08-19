@@ -30,9 +30,9 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 	* plugin: gravity forms box
 	* plugin: bpress right now in forums
 	* plugin: jetpack box
-	* plugin: modern tribe rss box (issues/7)
-	* plugin: all in one seo news box (issues/11)
-	* plugin: thesis news box (issues/13)
+	* plugin: modern tribe rss box
+	* plugin: all in one seo news box
+	* plugin: thesis news box
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
@@ -69,14 +69,14 @@ Release Date - 2026-08-19
 
 * tested up to WP 7.1
 * requires PHP 7.4 (WordPress 7.1 minimum)
-* fixed more-link `#more-` stripping via preg_replace, which also fixes the undefined `$end` notice (issues/12, issues/15)
+* fixed more-link `#more-` stripping via preg_replace, which also fixes the undefined `$end` notice
 * Hello Dolly removal now covers both bundled `hello.php` and the `hello-dolly` plugin directory, and only runs for users who can delete plugins
 * `DISALLOW_FILE_EDIT` is now defined as boolean `true`
 * core dashboard widget IDs/contexts verified against WP 7.1 (Quick Draft and Events and News are still the ones removed)
 * `wlwmanifest_link` was removed from WordPress core in 6.3; the unhook stays for older WP
 * `adjacent_posts_rel_link_wp_head` is no longer hooked in core; the unhook stays for older WP
-* removed all in one seo news dashboard widget (issues/11)
-* removed thesis news dashboard widget (issues/13)
+* removed all in one seo news dashboard widget
+* removed thesis news dashboard widget
 
 = 1.2.0 =
 
