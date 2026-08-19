@@ -1,13 +1,13 @@
 === Selfish Fresh Start ===
 Contributors: ryno267
 Donate link: https://cash.me/$chuckreynolds
-Tags: clean, fresh start, new install, clean admin, curly quotes, remove meta box, remove widgets, editor, file editor, no smilies, no trackbacks, no pings, self pings, organize, declutter, clutter, theme editor, rsd links, wlw manifest links, shortlink, dashboard widgets, quick press, dashboard news, remove edit menu, remove editor, remove plugin editor, remove theme editor
+Tags: dashboard, declutter, editor, admin, cleanup
 Requires at least: 4.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.2.0
 License: GPL-2.0+
-License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
@@ -24,15 +24,10 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: admin dashboard widgets:
 	* core: quick draft / your recent drafts
 	* core: wordpress events and news
-	* plugin: yoast seo overview box
-	* plugin: wp socializer box
-	* plugin: w3 total cache news box
-	* plugin: gravity forms box
-	* plugin: bpress right now in forums
-	* plugin: jetpack box
-	* plugin: modern tribe rss box
-	* plugin: all in one seo news box
-	* plugin: thesis news box
+	* plugin: yoast seo posts overview
+	* plugin: jetpack stats
+	* plugin: the events calendar news
+	* plugin: all in one seo news
 * Removed: post metabox's
 	* trackbacks
 * Removed: page metabox's
@@ -41,6 +36,7 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: appearance menu theme editor
 * Removed: plugins editor menu
 * Removed: plugins list edit links
+* Removed: jquery migrate on the frontend (wp-admin keeps it)
 * Removed: more jump link to #anchor
 * Removed: update notifications for non-admin users
 * Removed: potential for self ping backs
@@ -55,6 +51,8 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Want to remove the Tools Menu? There's a plugin for that: [Remove Tools Menu](https://wordpress.org/plugins/remove-tools-menu/)
 
 = Development =
+1.3.0 is currently beta (`1.3.0-beta1`) and is not the WordPress.org stable tag. Stable remains 1.2.0 until this ships.
+
 If you think you'd like to contribute, Pull Requests on [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop) are accepted.
 
 == Installation ==
@@ -63,20 +61,28 @@ If you think you'd like to contribute, Pull Requests on [Develop Branch on Githu
 1. That's it. seriously. Everything is done already. Enjoy.
 
 == Changelog ==
-= 1.3.0 =
+= 1.3.0-beta1 =
 
-Release Date - 2026-08-19
+Release Date - 2026-08-19 (beta, not shipped)
 
 * tested up to WP 7.1
 * requires PHP 7.4 (WordPress 7.1 minimum)
-* fixed more-link `#more-` stripping via preg_replace, which also fixes the undefined `$end` notice
-* Hello Dolly removal now covers both bundled `hello.php` and the `hello-dolly` plugin directory, and only runs for users who can delete plugins
-* `DISALLOW_FILE_EDIT` is now defined as boolean `true`
+* admin-only hooks no longer register on the frontend
+* discussion/smilie options are written only by users with `manage_options`, on admin_init and activation, never on public requests
+* Hello Dolly is deactivated first; files are deleted only when the filesystem method is `direct` so admin pages cannot be replaced by a credentials form
+* Hello Dolly removal covers bundled `hello.php` and the `hello-dolly` plugin directory
+* `DISALLOW_FILE_EDIT` is defined as boolean `true` at plugin load
+* self-pings compare URL hosts instead of string prefixes
+* more-link `#more-` stripping uses preg_replace and no longer notices on undefined `$end`
+* post/page metabox removal runs on `add_meta_boxes_{type}` after core registers the boxes
+* plugin dashboard widgets are removed on the dashboard screen only, both normal and side contexts
 * core dashboard widget IDs/contexts verified against WP 7.1 (Quick Draft and Events and News are still the ones removed)
 * `wlwmanifest_link` was removed from WordPress core in 6.3; the unhook stays for older WP
 * `adjacent_posts_rel_link_wp_head` is no longer hooked in core; the unhook stays for older WP
-* removed all in one seo news dashboard widget
-* removed thesis news dashboard widget
+* third-party dashboard widgets checked against current plugins: keep Yoast, Jetpack Stats, The Events Calendar news, All in One SEO news
+* Gravity Forms dashboard widget is left in place
+* jquery-migrate stripped from the frontend `jquery` handle; wp-admin is unchanged
+* dropped dead IDs: WP Socializer (`aw_dashboard`), W3 Total Cache WP-dashboard news (`w3tc_latest`; their news box now lives on the W3TC dashboard), bbPress Right Now (`bbp-dashboard-right-now`; stats moved into At a Glance in 2.6), Thesis news, old AIOSEO `semperplugins-rss-feed` id
 
 = 1.2.0 =
 
@@ -141,8 +147,6 @@ Release Date - 2015-12-02
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
-= 1.3.0 =
-Tested up to WordPress 7.1. Fixes the more-link PHP notice. Hello Dolly and dashboard widget cleanup updated.
 
 == Other Notes ==
 * Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Feel free to do pull requests or add issues on github: [Develop Branch on Github](https://github.com/chuckreynolds/Selfish-Fresh-Start/tree/develop)
