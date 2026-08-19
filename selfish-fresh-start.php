@@ -245,6 +245,7 @@ class Selfish_Fresh_Start {
 	public function nuke_more_jump_link_anchor( $link ) {
 
 		$offset = strpos( $link, '#more-' );
+		$end = false;
 
 		if ( $offset ) {
 			$end = strpos( $link, '"', $offset );
