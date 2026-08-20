@@ -2,7 +2,7 @@
 Contributors: ryno267
 Donate link: https://cash.app/$chuckreynolds
 Tags: dashboard, declutter, editor, admin, cleanup
-Requires at least: 4.0
+Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.3.0
@@ -85,7 +85,7 @@ First update in a long while. The plugin was rebuilt against modern WordPress: e
 **Compatibility**
 
 * tested up to WordPress 7.1
-* now requires PHP 7.4
+* now requires WordPress 7.0 or newer, and PHP 7.4. WordPress 7.0 is the first release whose own minimum is PHP 7.4, so the two line up.
 * dropped the `wlwmanifest_link` and adjacent-posts rel unhooks; core removed both before 6.8
 
 **Fixed**
@@ -179,7 +179,7 @@ Release Date - 2015-12-02
 == Upgrade Notice ==
 
 = 1.3.0 =
-First update since 2017. Tested on WordPress 7.1 and now requires PHP 7.4. Fixes a bug where saving a post could corrupt Cyrillic, CJK, emoji or accented characters. It also removes less than it used to: Gravity Forms and Jetpack Stats dashboard widgets are left alone, and smilies are no longer forced off.
+First update since 2017. Tested on WordPress 7.1, and now requires WordPress 7.0 and PHP 7.4. Fixes a bug where saving a post could corrupt Cyrillic, CJK, emoji or accented characters. It also removes less than it used to: Gravity Forms and Jetpack Stats dashboard widgets are left alone, and smilies are no longer forced off.
 
 == Other Notes ==
 * Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Bugs and ideas go here: [GitHub Issues](https://github.com/chuckreynolds/Selfish-Fresh-Start/issues)

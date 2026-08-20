@@ -8,7 +8,7 @@
  * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
  * Version:      1.3.0
- * Requires at least: 4.0
+ * Requires at least: 7.0
  * Requires PHP: 7.4
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.com
