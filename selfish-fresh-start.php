@@ -7,8 +7,8 @@
  * Plugin Name:  Selfish Fresh Start
  * Plugin URI:   https://wordpress.org/plugins/selfish-fresh-start/
  * Description:  Removes clutter and commonly unneeded things in WordPress. Full details in the plugin description.
- * Version:      1.3.0-beta1
- * Requires at least: 4.0
+ * Version:      1.3.0
+ * Requires at least: 7.0
  * Requires PHP: 7.4
  * Author:       Chuck Reynolds
  * Author URI:   https://chuckreynolds.com
@@ -379,20 +379,38 @@ class Selfish_Fresh_Start {
 
 		static $utf8_search = array( "\xe2\x80\x98", "\xe2\x80\x99", "\xe2\x80\x9c", "\xe2\x80\x9d", "\xe2\x80\x93", "\xe2\x80\x94", "\xe2\x80\xa6" );
 		static $utf8_replace = array( "'", "'", '"', '"', '-', '&mdash;', '&hellip;' );
-		static $win_search = array();
+		static $win_search = array( "\x91", "\x92", "\x93", "\x94", "\x96", "\x97", "\x85" );
 		static $win_replace = array( "'", "'", '"', '"', '-', '&mdash;', '&hellip;' );
 		static $latin1_search = array( 'â„¢', 'Â©', 'Â®' );
 		static $latin1_replace = array( '&trade;', '&copy;', '&reg;' );
 
-		if ( empty( $win_search ) ) {
-			$win_search = array( chr( 145 ), chr( 146 ), chr( 147 ), chr( 148 ), chr( 150 ), chr( 151 ), chr( 133 ) );
+		$fix_chars = str_replace( $utf8_search, $utf8_replace, $fix_chars );
+
+		// These Windows-1252 bytes are also valid UTF-8 continuation bytes, so a
+		// byte-wise replace would corrupt multi-byte characters. Non-UTF-8 input only.
+		if ( ! self::is_utf8( $fix_chars ) ) {
+			$fix_chars = str_replace( $win_search, $win_replace, $fix_chars );
 		}
 
-		$fix_chars = str_replace( $utf8_search, $utf8_replace, $fix_chars );
-		$fix_chars = str_replace( $win_search, $win_replace, $fix_chars );
 		$fix_chars = str_replace( $latin1_search, $latin1_replace, $fix_chars );
 
 		return $fix_chars;
+
+	}
+
+	/**
+	 * Whether a string is valid UTF-8. Falls back to a PCRE check without mbstring.
+	 *
+	 * @param string $string String to test.
+	 * @return bool
+	 */
+	private static function is_utf8( $string ) {
+
+		if ( function_exists( 'mb_check_encoding' ) ) {
+			return mb_check_encoding( $string, 'UTF-8' );
+		}
+
+		return '' === $string || 1 === preg_match( '//u', $string );
 
 	}
 

@@ -1,18 +1,20 @@
 === Selfish Fresh Start ===
 Contributors: ryno267
-Donate link: https://cash.me/$chuckreynolds
+Donate link: https://cash.app/$chuckreynolds
 Tags: dashboard, declutter, editor, admin, cleanup
-Requires at least: 4.0
+Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Built to run on EVERY WordPress install, selfish fresh start removes unneeded admin and html meta clutter.
 
 == Description ==
-This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, post and page widgets, fixes formatted curly quote problems, checks for and removes Hello Dolly plugin, removes junk header tags, removes generator header tag for extra security, removes update notifications for non-admins, prevents self-pinging, removes trackbacks, and a few other settings that nobody needs either. This is built to be very generalized so it will work with every WordPress site as a good clean-up fresh start and help keep clients out of the editing files.
+This plugin strips out the dashboard widgets, metaboxes, header tags and default settings that most WordPress sites never use. It fixes curly quotes and other mangled characters pasted in from Word, checks for and removes Hello Dolly, hides update notices from users who cannot act on them, stops your site pinging itself, and locks down the built-in file editors.
+
+There is nothing to configure. Activate it and it works. It is deliberately generalized so it is safe to drop onto any WordPress site as a clean starting point, and it helps keep clients out of the plugin and theme file editors.
 
 = Current Operations =
 * Removed: clean up unneeded header tags including:
@@ -22,6 +24,7 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: admin dashboard widgets:
 	* core: quick draft / your recent drafts
 	* core: wordpress events and news
+	* core: the welcome panel
 	* plugin: yoast seo posts overview
 	* plugin: the events calendar news
 	* plugin: all in one seo news
@@ -38,6 +41,7 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Removed: update notifications for non-admin users
 * Removed: potential for self ping backs
 * Removed: checks for and nukes Hello Dolly plugin *(sorry @photomatt)*
+* Fixed: curly quotes, en/em dashes, ellipses and other mangled characters on save
 * Off: turn off plugin/theme editor
 * Off: turn off global trackback/pingback setting
 
@@ -47,9 +51,6 @@ This WordPress plugin removes most, in my opinion, unneeded crappy dashboard, po
 * Want the post/page slug visible in the admin list? [Admin Slug Column](https://wordpress.org/plugins/admin-slug-column/)
 * Want the posts list to default to Published instead of All? [Filter Admin Published Default](https://wordpress.org/plugins/filter-admin-published-default/)
 
-= Development =
-1.3.0 is currently beta (`1.3.0-beta1`) and is not the WordPress.org stable tag. Stable remains 1.2.0 until this ships.
-
 Found a bug or have an idea? Open an issue: [GitHub Issues](https://github.com/chuckreynolds/Selfish-Fresh-Start/issues)
 
 == Installation ==
@@ -57,30 +58,61 @@ Found a bug or have an idea? Open an issue: [GitHub Issues](https://github.com/c
 1. Activate the plugin
 1. That's it. seriously. Everything is done already. Enjoy.
 
+== Frequently Asked Questions ==
+
+= Is there a settings page? =
+No, and there will not be one. The whole point is that it does its thing the moment you activate it.
+
+= My discussion settings keep reverting. Why? =
+That is this plugin, and it is intentional. It forces `default_ping_status` to closed and turns off the default pingback flag, because self-pings and trackbacks are almost entirely spam at this point. If you need pingbacks on, deactivate the plugin.
+
+= Will it really delete Hello Dolly? =
+Yes. It deactivates it first, then deletes the files, but only when WordPress can write to the filesystem directly. If your install needs FTP credentials to modify files, it deactivates it and stops there rather than interrupting your admin with a credentials prompt.
+
+= Does it change my existing content? =
+Only on save. The character cleanup runs when a post or title is saved, so pasted curly quotes get straightened at that point. It does not touch content already in the database.
+
+= Why is jquery-migrate still loading in wp-admin? =
+On purpose. Plenty of admin screens and plugins still lean on it. Only the frontend has it stripped.
+
 == Changelog ==
-= 1.3.0-beta1 =
+= 1.3.0 =
 
-Release Date - 2026-08-19 (beta, not shipped)
+Release Date - 2026-08-19
 
-* tested up to WP 7.1
-* requires PHP 7.4 (WordPress 7.1 minimum)
+First update in a long while. The plugin was rebuilt against modern WordPress: every hook was re-checked against core, dead code was dropped, and the parts that touch your site's data were tightened up.
+
+**Compatibility**
+
+* tested up to WordPress 7.1
+* now requires WordPress 7.0 or newer, and PHP 7.4. WordPress 7.0 is the first release whose own minimum is PHP 7.4, so the two line up.
+* dropped the `wlwmanifest_link` and adjacent-posts rel unhooks; core removed both before 6.8
+
+**Fixed**
+
+* the curly quote cleanup no longer corrupts non-Latin text. The Windows-1252 pass worked on raw bytes, and those same bytes are valid inside multi-byte UTF-8 characters, so saving a post containing Cyrillic, CJK, emoji or accented characters could mangle it. That pass now only runs on content that is not already valid UTF-8.
+* stripping `#more-` from the more link no longer throws a notice on an undefined variable
+* self-ping detection compares URL hosts instead of matching string prefixes
+* post and page metabox removal runs on `add_meta_boxes_{type}`, after core registers the boxes, so it actually takes effect
+* `DISALLOW_FILE_EDIT` is defined as a real boolean at plugin load, before menus and capability checks run
+
+**Security and safety**
+
 * admin-only hooks no longer register on the frontend
-* ping/trackback options are written only by users with `manage_options`, on admin_init and activation, never on public requests
-* Hello Dolly is deactivated first; files are deleted only when the filesystem method is `direct` so admin pages cannot be replaced by a credentials form
-* Hello Dolly removal covers bundled `hello.php` and the `hello-dolly` plugin directory
-* `DISALLOW_FILE_EDIT` is defined as boolean `true` at plugin load
-* self-pings compare URL hosts instead of string prefixes
-* more-link `#more-` stripping uses preg_replace and no longer notices on undefined `$end`
-* post/page metabox removal runs on `add_meta_boxes_{type}` after core registers the boxes
-* plugin dashboard widgets are removed on the dashboard screen only, both normal and side contexts
-* core dashboard widget IDs/contexts verified against WP 7.1 (Quick Draft and Events and News are still the ones removed)
-* dropped `wlwmanifest_link` and adjacent-posts rel unhooks; both are gone from core before 6.8
-* third-party dashboard widgets: Yoast, The Events Calendar news, All in One SEO news
-* Gravity Forms and Jetpack Stats dashboard widgets are left in place
+* ping and trackback options are written only by users with `manage_options`, and only on admin_init or activation, never on a public request
+* Hello Dolly is deactivated before deletion, and files are only deleted when the filesystem method is `direct`, so an admin page can never be replaced by a credentials form
+* Hello Dolly removal now covers both a bundled `hello.php` and the `hello-dolly` plugin directory
+
+**Changed**
+
+* also strips the shortlink HTTP header, not just the tag in the head
+* jquery-migrate is dropped from the frontend `jquery` handle; wp-admin is unchanged
 * no longer forces `use_smilies` off
-* also removes the shortlink HTTP header (`wp_shortlink_header`)
-* jquery-migrate stripped from the frontend `jquery` handle; wp-admin is unchanged
-* dropped dead IDs: WP Socializer (`aw_dashboard`), W3 Total Cache WP-dashboard news (`w3tc_latest`; their news box now lives on the W3TC dashboard), bbPress Right Now (`bbp-dashboard-right-now`; stats moved into At a Glance in 2.6), Thesis news, old AIOSEO `semperplugins-rss-feed` id
+* dashboard widget removal is scoped to the dashboard screen, in both the normal and side contexts
+* core dashboard widget ids and contexts re-verified against WP 7.1; quick draft and events and news are still the ones removed
+* third-party dashboard widgets removed: yoast seo, the events calendar news, all in one seo news
+* Gravity Forms and Jetpack Stats dashboard widgets are now left alone
+* dropped dead widget ids that no longer exist: WP Socializer, W3 Total Cache news, bbPress Right Now, Thesis news, and the old all in one seo feed id
 
 = 1.2.0 =
 
@@ -145,6 +177,9 @@ Release Date - 2015-12-02
 * take functions I use regularly and bundle for IPO *(initial public offering)*
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+First update since 2017. Tested on WordPress 7.1, and now requires WordPress 7.0 and PHP 7.4. Fixes a bug where saving a post could corrupt Cyrillic, CJK, emoji or accented characters. It also removes less than it used to: Gravity Forms and Jetpack Stats dashboard widgets are left alone, and smilies are no longer forced off.
 
 == Other Notes ==
 * Built in Chandler AZ, Updated in San Francisco, CA. I always used a lot of these functions on every site to help clean up the admin stuff and do some basic settings and based on some twitter replies others wanted this too as a public plugin. So... here we go. Bugs and ideas go here: [GitHub Issues](https://github.com/chuckreynolds/Selfish-Fresh-Start/issues)
